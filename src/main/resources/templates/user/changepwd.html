@@ -1,0 +1,121 @@
+<!-- <html lang="en" th:replace="~{user/userbase :: layout(~{::main})}">
+<body>
+	<main>
+		<h4 class="text-success text-center ">Change JobSeeker Password</h4>
+		<div th:if="${msg}">
+			<small th:text="${msg}" class="text-center text-center"></small>
+		</div>
+		<hr />
+		<form class="form-group" method="post" action="/user/changepwd">
+			<table class="table table-border" style="margin: auto; width: 50%">
+				<tr>
+					<td>Enter Old Password</td>
+					<td><input type="password" name="oldpassword"
+						class="form-control" required></td>
+				</tr>
+				<tr>
+					<td>Enter New Password</td>
+					<td><input type="password" name="newpassword"
+						class="form-control" required></td>
+				</tr>
+				<tr>
+					<td>Enter confirm Password</td>
+					<td><input type="password" name="confirmpassword"
+						class="form-control" required></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<button type="submit" class="btn btn-success">Change
+							Password</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</main>
+</body>
+</html> -->
+
+
+<html lang="en" th:replace="~{user/userbase :: layout(~{::main})}">
+<body>
+  <main class="p-4 d-flex justify-content-center">
+
+    <!-- Minimal Custom CSS -->
+    <style>
+      .form-card {
+        max-width: 480px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+      }
+    </style>
+
+    <!-- Card Wrapper -->
+    <div class="card form-card border-0 shadow-sm rounded-3 p-4">
+
+      <!-- Header -->
+      <div class="text-center mb-3">
+        <div class="bg-primary-subtle text-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width: 50px; height: 50px;">
+          <i class="bi bi-shield-lock-fill fs-4"></i>
+        </div>
+        <h2 class="fw-bold text-primary m-0 fs-4">Change Password</h2>
+      </div>
+
+      <!-- Alert Message -->
+      <div th:if="${msg}" class="alert alert-info alert-dismissible fade show text-center py-2 mb-3" role="alert">
+        <i class="bi bi-info-circle-fill me-1"></i>
+        <small th:text="${msg}" class="fw-semibold"></small>
+      </div>
+
+      <hr class="text-secondary opacity-25 mb-4" />
+
+      <!-- Form Body -->
+      <form method="post" action="/user/changepwd">
+        <div class="row g-3">
+
+          <!-- Old Password -->
+          <div class="col-12">
+            <label class="form-label fw-semibold text-secondary small">Old Password</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light text-muted"><i class="bi bi-key"></i></span>
+              <input type="password" name="oldpassword" class="form-control" placeholder="Enter old password" required />
+            </div>
+          </div>
+
+          <!-- New Password -->
+          <div class="col-12">
+            <label class="form-label fw-semibold text-secondary small">New Password</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light text-muted"><i class="bi bi-lock"></i></span>
+              <input type="password" name="newpassword" class="form-control" placeholder="Enter new password" required />
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="col-12">
+            <label class="form-label fw-semibold text-secondary small">Confirm New Password</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light text-muted"><i class="bi bi-check2-circle"></i></span>
+              <input type="password" name="confirmpassword" class="form-control" placeholder="Confirm new password" required />
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="col-12 mt-4">
+            <button type="submit" class="btn btn-primary w-100 fw-semibold py-2">
+              <i class="bi bi-arrow-repeat me-1"></i> Change Password
+            </button>
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+
+  </main>
+</body>
+</html>

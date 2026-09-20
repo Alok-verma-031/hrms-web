@@ -1,0 +1,145 @@
+<!-- <html lang="en" th:replace="~{user/userbase :: layout(~{::main})}">
+<body>
+	<main>
+		<h1>view jobs</h1>
+		<hr>
+		<table class="table table-border">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Title</th>
+					<th>Description</th>
+					<th>Location</th>
+					<th>Salary</th>
+					<th>Job Type</th>
+					<th>Last Date</th>
+					<th>posted date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="pj:${jinfo}">
+					<td th:text="${pj.id}"></td>
+					<td th:text="${pj.title}"></td>
+					<td th:text="${pj.description}"></td>
+					<td th:text="${pj.location}"></td>
+					<td th:text="${pj.salary}"></td>
+					<td th:text="${pj.jobtype}"></td>
+					<td th:text="${pj.lastdate}"></td>
+					<td th:text="${pj.posteddate}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</main>
+</body>
+</html> -->
+
+<html lang="en" th:replace="~{user/userbase :: layout(~{::main})}">
+<body>
+  <main class="p-4">
+
+    <!-- Minimal CSS -->
+    <style>
+      .custom-table thead th {
+        background-color: #0d6efd;
+        color: #ffffff;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+      }
+      .desc-cell {
+        max-width: 220px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    </style>
+
+    <!-- Card Wrapper -->
+    <div class="card border-0 shadow-sm rounded-3 p-4 bg-white">
+
+      <!-- Header -->
+      <div class="d-flex align-items-center gap-3 mb-3">
+        <div class="bg-primary-subtle text-primary rounded-3 p-2 d-flex align-items-center justify-content-center" style="width: 42px; height: 42px;">
+          <i class="bi bi-briefcase-fill fs-4"></i>
+        </div>
+        <h2 class="fw-bold text-dark m-0">View Available Jobs</h2>
+      </div>
+       <div th:if="${msg}">
+       <small th:text="${msg}" style="color:green;text-align:center;"></small>
+       </div>
+      <hr class="text-secondary opacity-25 mb-4" />
+
+      <!-- Table Container -->
+      <div class="table-responsive">
+        <table class="table custom-table table-hover table-bordered text-nowrap align-middle m-0">
+          <thead>
+            <tr>
+              <th class="text-center">S.No.</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Location</th>
+              <th>Salary</th>
+              <th>Job Type</th>
+              <th>Last Date</th>
+              <th>Posted Date</th>
+              <th class="text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="pj, pjStat : ${jinfo}">
+              <!-- Serial Number -->
+              <td class="text-center fw-semibold text-muted" th:text="${pjStat.count}">1</td>
+
+              <!-- Job Title -->
+              <td class="fw-bold text-primary" th:text="${pj.title}">Java Developer</td>
+
+              <!-- Description with hover title -->
+              <td>
+                <div class="desc-cell" th:text="${pj.description}" th:title="${pj.description}">Description text...</div>
+              </td>
+
+              <!-- Location -->
+              <td>
+                <i class="bi bi-geo-alt-fill text-primary me-1"></i>
+                <span th:text="${pj.location}">Remote</span>
+              </td>
+
+              <!-- Salary -->
+              <td class="fw-bold text-dark">
+                ₹<span th:text="${pj.salary}">50,000</span>
+              </td>
+
+              <!-- Job Type -->
+              <td>
+                <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2 rounded-pill fw-semibold" th:text="${pj.jobtype}">Full-Time</span>
+              </td>
+
+              <!-- Last Date -->
+              <td>
+                <i class="bi bi-calendar-event text-danger me-1"></i>
+                <span th:text="${pj.lastdate}">2026-08-15</span>
+              </td>
+
+              <!-- Posted Date -->
+              <td>
+                <i class="bi bi-clock-history text-muted me-1"></i>
+                <span class="text-muted" th:text="${pj.posteddate}">2026-07-20</span>
+              </td>
+
+              <!-- Apply Action Button -->
+              <td class="text-center">
+                <a th:href="@{/user/applyjob/{id}(id=${pj.id})}" class="btn btn-sm btn-primary fw-semibold d-inline-flex align-items-center gap-1 px-3" >
+                  <i class="bi bi-send-fill"></i> Apply
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </main>
+</body>
+</html>

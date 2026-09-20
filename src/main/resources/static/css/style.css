@@ -1,0 +1,764 @@
+.login-left
+    {
+    height: 500px;
+    background: linear-gradient(to left, #0000ff, #0062ffb3);
+}
+.login-right
+{
+     height:500px;
+}
+.login-btn
+{
+    background: linear-gradient(to left, rgb(129, 129, 183), rgb(6, 6, 198))!important;
+    color: white !important;
+}
+.login-btn:hover
+{
+    background: linear-gradient(to left, rgb(112, 112, 173), rgb(6, 6, 198))!important;
+    color: white !important;
+}
+.shield
+{
+    height: 50px;
+    width: 50px;
+    background-color: rgba(213, 213, 192,0.4);
+}
+.hrms-sol
+{
+    height: 25px;
+    width: 250px;
+    color: rgb(43, 86, 226);
+    background-color: rgba(255, 255, 255,0.7);
+}
+.idx-bg-row
+{
+    background: linear-gradient(to bottom right,rgb(203, 221, 225),white,white);
+}
+.btn.no-hover:hover {
+    background-color: inherit;
+    color: inherit;
+    border-color: inherit;
+    box-shadow: none;
+}
+.btn-login{
+    background-color: #0D6EFD;
+    color: white;
+}
+.btn-outline
+{
+ border:1px solid rgb(12, 169, 178) !important;
+ color:rgb(50, 133, 184);
+}
+.bg-offwhite
+{
+background-color: #e6f0ff;
+color: blue;
+padding-top: 5px;
+}
+.border_left
+{
+    border-left: 5px solid blue;
+}
+.bg-color
+{
+background:linear-gradient(to right , #3F85FD, #5A1EF3);
+color:white;
+}
+.f-border
+{
+    border-top:5px solid #0000ff ;
+}
+.bgc-img{
+    background-image: url("../images/bgc-img.jpeg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 400px;
+}
+.brown
+{
+    color: #E8A33D;
+}
+.transparent-bgc
+{
+background: rgba(213, 213, 192,0.1);
+border: 1px solid #a1855b;
+}
+.neg-mar
+{
+    margin-top: -150px;
+}
+.bg-navyblue
+{
+    background-color: #1A3848;
+}
+.text-offwhite
+{
+color: #C0C6C9;
+}
+.logo
+{
+    height: 35px;
+    width:35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center; /* Horizontal center */
+    align-items: center;     /* Vertical center */
+    background-color: rgba(213, 165, 54, 0.1);
+    border: 1px solid #a1855b;
+}
+.logo1
+{
+    height: 40px;
+    width:40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center; /* Horizontal center */
+    align-items: center;     /* Vertical center */
+    background-color: #254C5F;
+    border: 1px solid #232220;
+    color: #E8A33D;
+}
+.fs-01
+{
+    font-size: 12px;
+}
+
+/* jobs starts */
+
+.neg-mar1
+{
+    margin-top: -100px;
+}
+
+.bg-brown
+{
+    background-color: #E8A33D;
+    
+}
+.text-darkblue
+{
+    color: #254C5F;
+}
+.bg-darkblue
+{
+  background-color: #254C5F;
+}
+
+/* hiring process s */
+.step {
+    position: relative;
+}
+
+.step::after {
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 60%;
+    width: 80%;
+    border-top: 3px dashed #1d4f68;
+    z-index: -1;
+}
+
+.step:last-child::after {
+    display: none;
+}
+
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    background: #184d68;
+    color: #f4ad42;
+    border-radius: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    border: 5px solid #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,.15);
+}
+
+.step h5 {
+    margin-top: 20px;
+}
+
+.step p {
+    color: #666;
+    font-size: 15px;
+}
+/* hiring process e */
+
+
+
+/* benifit start */
+.benefits-section{
+    background:#eef7f6;
+    padding:80px 0;
+}
+
+.benefit-tag{
+    display:inline-block;
+    padding:8px 25px;
+    border:1px solid #cfd8dc;
+    border-radius:25px;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:2px;
+    color:#1f4d6b;
+    background:#fff;
+}
+
+.benefits-section h2{
+    font-size:48px;
+    font-weight:400;
+}
+
+.benefits-section p{
+    font-size:18px;
+}
+
+.benefit-card{
+    background:#fff;
+    border-radius:18px;
+    padding:40px 20px;
+    text-align:center;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.benefit-card:hover{
+    transform:translateY(-8px);
+}
+
+.benefit-card i{
+    font-size:32px;
+    color:#d38a17;
+    margin-bottom:18px;
+}
+
+.benefit-card h5{
+    font-size:22px;
+    margin:0;
+}
+
+@media(max-width:768px){
+
+    .benefits-section h2{
+        font-size:35px;
+    }
+
+    .benefit-card{
+        padding:30px 15px;
+    }
+}
+/* benifit end */
+
+/* last section start */
+.social-icon{
+    width:42px;
+    height:42px;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    background:#eef7f7;
+    color:#1f4d63;
+    text-decoration:none;
+    margin:0 5px;
+    transition:.3s;
+}
+
+.social-icon:hover{
+    background:#f4a825;
+    color:#fff;
+}
+
+.icon-circle{
+    width:60px;
+    height:60px;
+    background:#1f4d63;
+    color:#f4a825;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+}
+/* last section end */
+
+
+/* jobs end */
+
+/*about us start*/
+
+
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f8f9fc;
+        }
+
+        /* Hero Section */
+
+        .hero {
+            min-height: 520px;
+            background: linear-gradient(rgba(67, 89, 255, .82), rgba(123, 73, 255, .82)),
+                url("images/poster.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+        }
+
+        .badge-box {
+            background: rgba(255, 255, 255, .18);
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .title {
+            font-size: 60px;
+            color: #16284a;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .hero h1 {
+            color: #16284a;
+            font-weight: 700;
+        }
+
+        .hero p {
+            line-height: 32px;
+        }
+
+        .hero .btn {
+            font-weight: 600;
+            color: #2f5dff;
+        }
+
+        /* Right Card */
+
+        .glass-card {
+            background: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(8px);
+            border-radius: 25px;
+        }
+
+        .glass-card i {
+            font-size: 45px;
+        }
+
+        .glass-card h2 {
+            font-size: 32px;
+        }
+
+        /* About Section */
+
+        img {
+            border-radius: 25px;
+        }
+
+        h6 {
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            color: #18253d;
+        }
+
+        .text-secondary {
+            line-height: 30px;
+        }
+
+        /* Mission & Vision */
+
+        .mission-card {
+            min-height: 180px;
+            border-radius: 20px;
+            transition: .3s;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Responsive */
+
+        @media(max-width:992px) {
+
+            .hero {
+                text-align: center;
+                padding: 70px 0;
+            }
+
+            .hero p {
+                width: 100% !important;
+            }
+
+            .glass-card {
+                margin-top: 30px;
+            }
+
+        }
+
+        @media(max-width:576px) {
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .glass-card h2 {
+                font-size: 26px;
+            }
+
+        }
+
+        .feature-card {
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+            transition: .3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .icon-box {
+            width: 65px;
+            height: 65px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #2563ff, #6736ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon-box i {
+            color: #fff;
+            font-size: 28px;
+        }
+
+        .feature-card h5 {
+            font-size: 22px;
+            color: #132548;
+        }
+
+        .choose-card {
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+        }
+
+        .choose-card h5 {
+            font-size: 21px;
+            color: #132548;
+        }
+
+        @media(max-width:992px) {
+
+            .feature-card,
+            .choose-card {
+                margin-bottom: 15px;
+            }
+
+        }
+
+        .tech-card {
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+            transition: .3s;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .tech-card i {
+            font-size: 35px;
+            color: #6d3cff;
+        }
+
+        .tech-card h5 {
+            font-size: 20px;
+            color: #172847;
+        }
+
+        .stats-section {
+            background: linear-gradient(90deg, #2f66ff, #7b39ff);
+        }
+
+        .stats-section h1 {
+            font-size: 60px;
+            font-weight: 700;
+            color: #182847;
+        }
+
+        .stats-section h5 {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .last-card {
+            border-radius: 22px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+        }
+
+        .last-card h1 {
+            color: #182847;
+        }
+
+        .last-card p {
+            font-size: 18px;
+            line-height: 32px;
+        }
+
+        .footer-banner {
+            min-height: 340px;
+            background: linear-gradient(rgba(31, 49, 110, .78), rgba(64, 104, 255, .78)),
+                url("images/last.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .footer-banner h1 {
+            color: #162847;
+            font-weight: 700;
+        }
+
+        .footer-banner p {
+            color: #fff;
+        }
+
+        .footer-banner .btn {
+            border-width: 2px;
+        }
+
+        .footer-banner .btn-light {
+            color: #2f63ff;
+        }
+
+        .footer-banner .btn:hover {
+            transform: translateY(-3px);
+            transition: .3s;
+        }
+        
+        
+       /*about us end*/
+       
+       
+      /* candidate register start */
+:root {
+            --primary-blue: #4f46e5;
+            --primary-gradient: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #7c3aed 100%);
+            --bg-light: #f8fafc;
+            --dark-footer: #0b132b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            /* color: #334155; */
+        }
+
+        /*  Top Navbar 
+        .navbar-brand {
+            font-weight: 700;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .brand-logo {
+            background: #ff8c00;
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .nav-link {
+            font-size: 0.95rem;
+            color: #475569 !important;
+            font-weight: 500;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+        }
+        .nav-link:hover {
+            color: var(--primary-blue) !important;
+        }
+        .btn-header-login {
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 20px;
+            padding: 6px 20px;
+            font-weight: 600;
+            border: none;
+        }
+ */
+        /* Hero / Registration Section */
+        .hero-banner {
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 0 0 24px 24px;
+            padding: 40px 20px 80px 20px;
+            position: relative;
+        }
+
+        .badge-pill-custom {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        /* Card Container Styling */
+        .registration-card {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            padding: 35px;
+            border: none;
+        }
+
+        .card-icon-header {
+            width: 50px;
+            height: 50px;
+            background: #6366f1;
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 15px auto;
+        }
+
+        .form-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 4px;
+        }
+
+        .input-group-text {
+            background-color: #f8fafc;
+            border-right: none;
+            color: #64748b;
+        }
+
+        .form-control, .form-select {
+            border-left: none;
+            background-color: #f8fafc;
+            font-size: 0.9rem;
+            padding: 10px 12px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: #fff;
+            box-shadow: none;
+            border-color: #cbd5e1;
+        }
+
+        .input-group:focus-within .input-group-text {
+            background-color: #fff;
+            border-color: #cbd5e1;
+        }
+
+        .alert-security {
+            background-color: #e6f4ea;
+            color: #137333;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .btn-register {
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: 20px;
+            padding: 10px 30px;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-login-outline {
+            border: 1.5px solid #2563eb;
+            border-radius: 20px;
+            padding: 10px 30px;
+            font-weight: 600;
+            color: #2563eb;
+            background: transparent;
+        }
+
+        /* Features Section */
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            height: 100%;
+            transition: transform 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: #6366f1;
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin: 0 auto 15px auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-footer);
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        footer h6 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        footer a {
+            color: #94a3b8;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+/* candidate register end */
+       

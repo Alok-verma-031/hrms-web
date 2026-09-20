@@ -1,0 +1,61 @@
+<html lang="en" th:replace="~{base::layout(~{::main})}">
+<body>
+	<main>
+		<!-- login -->
+		<div class="row pb-5 bg-light">
+                <div class="col-sm-10 mx-auto mt-4">
+                    <div class="row">
+                        <div class="col-sm-6 login-left text-light shadow border rounded-start-4 p-5">
+                            <div class="row">
+                                <div class="shield ms-2 rounded-2 p-2 pe-3 d-flex justify-content-around"><i class="fa-solid fa-shield-halved fa-2x"
+                                        style="color: rgb(255, 255, 255);"></i></div>
+                            </div>
+                            <h2 class=" my-3 fw-bold">Welcome to Admin Login </h2>
+                            <small class="fw-bold my-2">Sign in to manage your workspace, track your team and stay on
+                                top of
+                                everything that matters.</small>
+                            <p class="fw-bold mt-4"><i class="fa-solid fa-circle-check"
+                                    style="color: rgb(255, 255, 255);"></i>Secure role-based access</p>
+                            <p class="fw-bold"><i class="fa-solid fa-circle-check"
+                                    style="color: rgb(255, 255, 255);"></i>Built for admins and Employee</p>
+                            <p class="fw-bold"><i class="fa-solid fa-circle-check"
+                                    style="color: rgb(255, 255, 255);"></i>Fast relaible , always available</p>
+                        </div>
+                        <div class="col-sm-6 shadow login-right rounded-end-4 p-5">
+                            <h2 class="fw-bold m-2">Admin Login</h2>
+                            <p>Enter your credential to continue.</p>
+                            <form method="post" th:object="${aidto}" >
+                                <div class="mb-3">
+                                    <label for="formGroupExampleInput" class="form-label fw-bold">Admin ID</label>
+                                    <input type="email" th:field="${aidto.adminid}" class="form-control" name="emailaddress"
+                                        placeholder="👤Enter User ID">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="formGroupExampleInput2" class="form-label fw-bold">password</label>
+                                    <input type="password" th:field="${aidto.password}"class="form-control" name="password"
+                                        placeholder="🔒Enter your password">
+                                </div>
+                                <!-- <div class="col-md-4 w-100">
+                                    <label for="inputState" class="form-label fw-bold">User Type</label>
+                                    <select id="inputState" class="form-select">
+                                    </select>
+                                </div> -->
+                                <div class="d-grid gap-2 mt-4">
+                                    <button class="btn btn-primary" type="submit"><b> Login</b><i
+                                            class="fa-solid fa-arrow-right"
+                                            style="color: rgb(255, 255, 255);"></i></button>
+                                </div>
+                                <div class="mt-2">
+                                    <a href="#" class="text-info text-decoration-none text-center d-block">
+                                        Forgot Password?
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- login end -->
+	</main>
+</body>
+</html>

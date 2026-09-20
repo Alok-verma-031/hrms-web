@@ -1,0 +1,261 @@
+<html lang="en" th:replace="~{admin/adminbase :: layout(~{::main})}">
+<body>
+	<main class="p-0">
+
+		<!-- Custom Modern Styling matching Image Theme -->
+		<style>
+.fb-hero-banner {
+	background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 50%, #6366f1 100%);
+	color: #ffffff;
+	border-radius: 0 0 24px 24px;
+	padding: 30px 40px 60px 40px;
+	margin-bottom: -35px;
+}
+
+.fb-stat-card {
+	border-radius: 16px;
+	padding: 22px;
+	color: #ffffff;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+	transition: transform 0.2s ease;
+}
+
+.fb-stat-card:hover {
+	transform: translateY(-3px);
+}
+
+.fb-card-blue {
+	background: linear-gradient(135deg, #4481eb 0%, #04baf6 100%);
+}
+
+.fb-card-purple {
+	background: linear-gradient(135deg, #9d50bb 0%, #6e48aa 100%);
+}
+
+.fb-card-green {
+	background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.fb-card-orange {
+	background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);
+}
+
+.fb-badge-pill {
+	background: rgba(255, 255, 255, 0.25);
+	color: #ffffff;
+	border-radius: 20px;
+	padding: 4px 12px;
+	font-size: 0.75rem;
+	font-weight: 600;
+	display: inline-block;
+	margin-top: 10px;
+}
+
+.fb-table-container {
+	background: #ffffff;
+	border-radius: 20px;
+	box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+	padding: 24px;
+}
+
+.fb-table-header-bg {
+	background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+	color: #ffffff;
+}
+
+.fb-table-header-bg th {
+	color: #ffffff !important;
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	border: none;
+	padding: 14px 16px;
+}
+
+.avatar-circle {
+	width: 36px;
+	height: 36px;
+	background-color: #4f46e5;
+	color: #ffffff;
+	font-weight: 600;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.85rem;
+}
+
+.contact-badge {
+	background-color: #e0f2fe;
+	color: #0284c7;
+	border-radius: 20px;
+	padding: 4px 12px;
+	font-size: 0.82rem;
+	font-weight: 600;
+}
+
+.date-badge {
+	background-color: #fff7ed;
+	color: #ea580c;
+	border-radius: 8px;
+	padding: 4px 8px;
+	font-size: 0.82rem;
+}
+
+.feedback-msg-cell {
+	max-width: 250px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+</style>
+
+		<!-- Top Hero Header -->
+		<div class="fb-hero-banner d-flex align-items-center justify-content-between">
+			<div class="d-flex align-items-center gap-3">
+				<div class="bg-white bg-opacity-25 rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 54px; height: 54px;">
+					<i class="bi bi-chat-left-quote-fill fs-3 text-white"></i>
+				</div>
+				<div>
+					<h2 class="fw-bold mb-0">Feedback List</h2>
+					<p class="text-white-50 mb-0 fs-7">Review user feedback and suggestions</p>
+				</div>
+			</div>
+			<a href="/admin/admindashboard" class="btn btn-light rounded-pill px-4 fw-semibold text-primary shadow-sm">
+				<i class="bi bi-arrow-left me-1"></i> Back to Dashboard
+			</a>
+		</div>
+
+		<div class="px-4 mt-5">
+			<!-- 4 Modern Stat Cards -->
+			<div class="row g-3 mb-4">
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="fb-stat-card fb-card-blue">
+						<div class="mb-2"><i class="bi bi-layers-fill fs-4"></i></div>
+						<h2 class="fw-bold mb-0" th:text="${feed != null ? feed.size() : 0}">0</h2>
+						<p class="small text-white-50 mb-1 fw-semibold text-uppercase">Total Feedback</p>
+						<span class="fb-badge-pill">All Records</span>
+					</div>
+				</div>
+
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="fb-stat-card fb-card-purple">
+						<div class="mb-2"><i class="bi bi-lightbulb-fill fs-4"></i></div>
+						<h2 class="fw-bold mb-0" th:text="${feed != null ? feed.size() : 0}">0</h2>
+						<p class="small text-white-50 mb-1 fw-semibold text-uppercase">User Suggestions</p>
+						<span class="fb-badge-pill">Suggestions</span>
+					</div>
+				</div>
+
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="fb-stat-card fb-card-green">
+						<div class="mb-2"><i class="bi bi-clock-history fs-4"></i></div>
+						<h2 class="fw-bold mb-0" th:text="${feed != null ? feed.size() : 0}">0</h2>
+						<p class="small text-white-50 mb-1 fw-semibold text-uppercase">Recent Feedback</p>
+						<span class="fb-badge-pill">Last 30 Days</span>
+					</div>
+				</div>
+
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="fb-stat-card fb-card-orange">
+						<div class="mb-2"><i class="bi bi-shield-check fs-4"></i></div>
+						<h2 class="fw-bold mb-0">Active</h2>
+						<p class="small text-white-50 mb-1 fw-semibold text-uppercase">HR Review</p>
+						<span class="fb-badge-pill">In Progress</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Success / Info Message -->
+			<div th:if="${msg}" class="alert alert-success alert-dismissible fade show text-center py-2 mb-4 rounded-3" role="alert">
+				<i class="bi bi-check-circle-fill me-1"></i>
+				<span th:text="${msg}" class="fw-semibold"></span>
+			</div>
+
+			<!-- Feedback Table Card -->
+			<div class="fb-table-container mb-4">
+				<!-- Header inside card -->
+				<div class="d-flex align-items-center justify-content-between mb-3">
+					<div class="d-flex align-items-center gap-2">
+						<div class="bg-primary-subtle text-primary rounded-3 p-2 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+							<i class="bi bi-list-task fs-5"></i>
+						</div>
+						<div>
+							<h5 class="fw-bold text-dark mb-0">Feedback Records</h5>
+							<small class="text-muted">All submitted user feedback entries</small>
+						</div>
+					</div>
+					<span class="badge bg-primary px-3 py-2 rounded-pill fs-7" th:text="${(feed != null ? feed.size() : 0) + ' Records'}">0 Records</span>
+				</div>
+
+				<hr class="text-secondary opacity-10 mb-4" />
+
+				<!-- Table -->
+				<div class="table-responsive">
+					<table class="table align-middle text-nowrap m-0">
+						<thead>
+							<tr class="fb-table-header-bg">
+								<th class="text-center rounded-start"># ID</th>
+								<th>NAME</th>
+								<th>CONTACT</th>
+								<th>SUBJECT</th>
+								<th>FEEDBACK MESSAGE</th>
+								<th>DATE</th>
+								<th class="text-center rounded-end">ACTION</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="f : ${feed}">
+								<!-- ID -->
+								<td class="text-center fw-semibold text-muted" th:text="${f.id}">1</td>
+
+								<!-- Name with Avatar Circle -->
+								<td>
+									<div class="d-flex align-items-center gap-2">
+										<div class="avatar-circle" th:text="${#strings.substring(f.name, 0, 1).toUpperCase()}">U</div>
+										<span class="fw-bold text-dark" th:text="${f.name}">User Name</span>
+									</div>
+								</td>
+
+								<!-- Contact No -->
+								<td>
+									<span class="contact-badge">
+										<i class="bi bi-telephone-fill me-1"></i>
+										<span th:text="${f.contactno}">+91 9876543210</span>
+									</span>
+								</td>
+
+								<!-- Subject -->
+								<td class="fw-semibold text-primary" th:text="${f.subject}">General</td>
+
+								<!-- Response/Feedback Text -->
+								<td>
+									<div class="feedback-msg-cell text-muted" th:text="${f.responsetext}" th:title="${f.responsetext}">Feedback description text...</div>
+								</td>
+
+								<!-- Posted Date -->
+								<td>
+									<span class="date-badge">
+										<i class="bi bi-calendar3 me-1"></i>
+										<span th:text="${f.posteddate}">2026-08-16</span>
+									</span>
+								</td>
+
+								<!-- Action Delete -->
+								<td class="text-center">
+									<a th:href="@{/admin/deletefeed(id=${f.id})}" 
+									   class="btn btn-outline-danger btn-sm px-3 rounded-2"
+									   onclick="return confirm('Are you sure you want to delete this feedback?');">
+										<i class="bi bi-trash-fill me-1"></i>Delete
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</main>
+</body>
+</html>

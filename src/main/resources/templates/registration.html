@@ -1,0 +1,250 @@
+<html lang="en" th:replace="~{base::layout(~{::main})}">
+<body>
+	<main>
+		<!-- Hero / Registration Main Section -->
+		<section class="container my-4">
+			<div class="row g-4 align-items-stretch">
+
+				<!-- Left Information Column -->
+				<div class="col-lg-5">
+					<div
+						class="hero-banner h-100 d-flex flex-column justify-content-between">
+						<div>
+							<div class="badge-pill-custom">
+								<i class="fa-solid fa-users"></i> HR Synergy Careers
+							</div>
+							<h1 class="fw-bold mb-3 display-6">Join HR Synergy</h1>
+							<p class="text-white-50 fs-6">Start your professional journey
+								with HR Synergy. Register today to explore exciting career
+								opportunities, apply for jobs, and build your future with us.</p>
+
+							<div class="d-flex flex-column gap-2 mt-4">
+								<div class="badge-pill-custom w-auto align-self-start">
+									<i class="fa-solid fa-chart-line"></i> Career Growth
+								</div>
+								<div class="badge-pill-custom w-auto align-self-start">
+									<i class="fa-solid fa-people-group"></i> Professional Team
+								</div>
+								<div class="badge-pill-custom w-auto align-self-start">
+									<i class="fa-solid fa-graduation-cap"></i> Learning
+									Opportunities
+								</div>
+								<div class="badge-pill-custom w-auto align-self-start">
+									<i class="fa-solid fa-building"></i> Modern Workplace
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Right Candidate Form Column -->
+				<div class="col-lg-7">
+					<div class="registration-card">
+						<div class="text-center">
+							<div class="card-icon-header">
+								<i class="fa-solid fa-user-plus"></i>
+							</div>
+							<h3 class="fw-bold text-dark">Candidate Registration</h3>
+							<p class="text-muted small">Create your candidate account and
+								become part of HR Synergy.</p>
+						</div>
+						<div th:if="${msg}">
+							<small th:text="${msg}" style="color: green; text-align: center"></small>
+						</div>
+						<form class="form-group mt-4" action="" method="post"
+							th:object="${udto}">
+							<div class="row g-3">
+								<!-- Name -->
+								<div class="col-md-6">
+									<label class="form-label">Name</label>
+									<div class="input-group">
+										<span class="input-group-text"><i
+											class="fa-regular fa-user"></i></span> <input type="text"
+											th:field="${udto.name}" class="form-control"
+											placeholder="Full Name" required>
+									</div>
+								</div>
+
+								<!-- Gender -->
+								<div class="col-md-6">
+									<label class="form-label">Gender</label>
+									<div class="input-group">
+										<span class="input-group-text"><i
+											class="fa-solid fa-venus-mars"></i></span> <select
+											class="form-select">
+											<option selected disabled>Select Gender</option>
+											<option value="Male" th:field="${udto.gender}">Male</option>
+											<option value="Female" th:field="${udto.gender}">Female</option>
+											<option value="Other" th:field="${udto.gender}">Other</option>
+										</select>
+									</div>
+								</div>
+
+								<!-- Email -->
+								<div class="col-md-6">
+									<label class="form-label">Email Address</label>
+									<div class="input-group">
+										<span class="input-group-text"><i
+											class="fa-regular fa-envelope"></i></span> <input type="email"
+											class="form-control" th:field="${udto.emailaddress}"
+											placeholder="Email Address" required>
+									</div>
+								</div>
+
+								<!-- Password -->
+								<div class="col-md-6">
+									<label class="form-label">Password</label>
+									<div class="input-group">
+										<span class="input-group-text"><i
+											class="fa-solid fa-lock"></i></span> 
+											<input type="password"
+											class="form-control" th:field="${udto.password}"
+											placeholder="Password"> <span
+											class="input-group-text border-start-0"
+											style="cursor: pointer;" required><i class="fa-regular fa-eye"></i></span>
+									</div>
+								</div>
+
+								<!-- Contact No -->
+								<div class="col-md-6">
+									<label class="form-label">Contact No</label>
+									<div class="input-group">
+										<span class="input-group-text"><i
+											class="fa-solid fa-phone"></i></span> <input type="tel"
+											class="form-control" th:field="${udto.contactno}"
+											placeholder="Contact Number" required>
+									</div>
+								</div>
+
+
+								<!-- Qualification -->
+								<div class="col-md-6">
+									<label class="form-label">Qualification</label>
+									<div class="input-group">
+										<span class="input-group-text"><i
+											class="fa-solid fa-user-graduate"></i></span> <input type="text"
+											class="form-control" th:field="${udto.qualification}"
+											placeholder="Qualification" required>
+									</div>
+								</div>
+
+								<!-- Experience -->
+								<div class="col-md-6">
+									<label class="form-label">Experience</label>
+									<div class="input-group">
+										<span class="input-group-text"><i
+											class="fa-solid fa-briefcase"></i></span> <input type="text"
+											class="form-control" th:field="${udto.experience}"
+											placeholder="Fresher / 1 Year" required>
+									</div>
+								</div>
+
+								<!-- Key Skills -->
+								<div class="col-12">
+									<label class="form-label">Key Skills</label>
+									<div class="input-group">
+										<span class="input-group-text"><i
+											class="fa-solid fa-code"></i></span>
+										<textarea class="form-control" rows="2"
+											th:field="${udto.keyskills}"
+											placeholder="Java, Spring Boot, SQL, etc." required></textarea>
+									</div>
+								</div>
+
+								<!-- Address -->
+								<div class="col-12">
+									<label class="form-label">Address</label>
+									<div class="input-group">
+										<span class="input-group-text"><i
+											class="fa-solid fa-building"></i></span>
+										<textarea class="form-control" rows="2"
+											th:field="${udto.address}" placeholder="Complete Address"></textarea>
+									</div>
+								</div>
+
+								<!-- Security Alert -->
+								<div class="col-12">
+									<div
+										class="alert alert-security d-flex align-items-center mb-0 p-2 px-3"
+										role="alert">
+										<i class="fa-solid fa-shield-halved me-2"></i>
+										<div>Your personal information is securely protected.</div>
+									</div>
+								</div>
+
+								<!-- Buttons -->
+								<div class="col-12 text-center mt-4">
+									<button type="submit" class="btn btn-register me-2">
+										<i class="fa-solid fa-user-plus me-1"></i> Register
+									</button>
+									<a href="/login" class="btn btn-login-outline"> <i
+										class="fa-solid fa-right-to-bracket me-1"></i> Login
+									</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+		<!-- Why Register Section -->
+		<section class="container my-5">
+			<h3 class="text-center fw-bold text-dark mb-4">Why Register with
+				HR Synergy?</h3>
+			<div class="row g-4">
+				<div class="col-md-4">
+					<div class="feature-card">
+						<div class="feature-icon">
+							<i class="fa-solid fa-briefcase"></i>
+						</div>
+						<h6 class="fw-bold">Latest Job Opportunities</h6>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="feature-card">
+						<div class="feature-icon">
+							<i class="fa-solid fa-paper-plane"></i>
+						</div>
+						<h6 class="fw-bold">Easy Job Applications</h6>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="feature-card">
+						<div class="feature-icon">
+							<i class="fa-solid fa-list-check"></i>
+						</div>
+						<h6 class="fw-bold">Application Tracking</h6>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="feature-card">
+						<div class="feature-icon">
+							<i class="fa-solid fa-user-shield"></i>
+						</div>
+						<h6 class="fw-bold">Secure Candidate Profile</h6>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="feature-card">
+						<div class="feature-icon">
+							<i class="fa-solid fa-bell"></i>
+						</div>
+						<h6 class="fw-bold">Interview Notifications</h6>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="feature-card">
+						<div class="feature-icon">
+							<i class="fa-solid fa-rocket"></i>
+						</div>
+						<h6 class="fw-bold">Career Development</h6>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

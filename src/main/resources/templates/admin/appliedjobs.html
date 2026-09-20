@@ -1,0 +1,134 @@
+<html lang="en" th:replace="~{admin/adminbase :: layout(~{::main})}">
+<body>
+	<main class="p-4">
+
+		<!-- Minimal Custom CSS -->
+		<style>
+.custom-table thead th {
+	background-color: #0d6efd;
+	color: #ffffff;
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 0.8rem;
+	letter-spacing: 0.5px;
+}
+
+.top-stat-card {
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.top-stat-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 8px 15px rgba(0,0,0,0.08) !important;
+}
+</style>
+
+		<!-- Top Summary Stats Cards (2 Cards Only) -->
+		<div class="row g-3 mb-4">
+			<!-- Card 1: Total Applied Jobs -->
+			<div class="col-12 col-md-6">
+				<div class="card border-0 shadow-sm rounded-3 p-3 bg-white top-stat-card">
+					<div class="d-flex align-items-center justify-content-between">
+						<div>
+							<p class="text-muted fw-medium mb-1 fs-7">Total Applications</p>
+							<h3 class="fw-bold text-dark m-0" th:text="${aj != null ? aj.size() : 0}">0</h3>
+						</div>
+						<div class="bg-primary-subtle text-primary rounded-3 p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+							<i class="bi bi-file-earmark-person-fill fs-3"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Card 2: Quick Link to Dashboard -->
+			<div class="col-12 col-md-6">
+				<a href="/admin/admindashboard" class="text-decoration-none">
+					<div class="card border-0 shadow-sm rounded-3 p-3 bg-white top-stat-card">
+						<div class="d-flex align-items-center justify-content-between">
+							<div>
+								<p class="text-muted fw-medium mb-1 fs-7">Quick Navigation</p>
+								<h5 class="fw-bold text-success m-0">Go to Dashboard</h5>
+							</div>
+							<div class="bg-success-subtle text-success rounded-3 p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+								<i class="bi bi-speedometer2 fs-3"></i>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+
+		<!-- Main Table Card Wrapper -->
+		<div class="card border-0 shadow-sm rounded-3 p-4 bg-white">
+
+			<!-- Header -->
+			<div class="d-flex align-items-center gap-3 mb-3">
+				<div
+					class="bg-primary-subtle text-primary rounded-3 p-2 d-flex align-items-center justify-content-center"
+					style="width: 42px; height: 42px;">
+					<i class="bi bi-briefcase-fill fs-4"></i>
+				</div>
+				<h2 class="fw-bold text-dark m-0">Applied Jobs</h2>
+			</div>
+
+			<hr class="text-secondary opacity-25 mb-4" />
+
+			<!-- Table Container -->
+			<div class="table-responsive">
+				<table
+					class="table custom-table table-hover table-bordered text-nowrap align-middle m-0">
+					<thead>
+						<tr>
+							<th class="text-center">S.No.</th>
+							<th class="text-center">Job ID</th>
+							<th>Title</th>
+							<th>Applicant Name</th>
+							<th>Contact No</th>
+							<th>Email Address</th>
+							<th>Qualification</th>
+							<th>Experience</th>
+							<th>Key Skills</th>
+							<th>Applied Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="j, jStat : ${aj}">
+							<!-- S.No Index -->
+							<td class="text-center fw-semibold text-muted" th:text="${jStat.count}">1</td>
+
+							<!-- Job ID -->
+							<td class="text-center fw-bold text-secondary" th:text="${j.jobid}">101</td>
+
+							<!-- Job Title -->
+							<td class="fw-bold text-primary" th:text="${j.title}">Java Developer</td>
+
+							<!-- Name -->
+							<td class="fw-bold text-dark" th:text="${j.name}">John Doe</td>
+
+							<!-- Contact -->
+							<td><i class="bi bi-telephone-fill text-primary me-1"></i> <span th:text="${j.contactno}">+91 9876543210</span></td>
+
+							<!-- Email -->
+							<td><i class="bi bi-envelope-fill text-muted me-1"></i> <span th:text="${j.emailaddress}">john@example.com</span></td>
+
+							<!-- Qualification -->
+							<td><span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1 rounded" th:text="${j.qualification}">B.Tech</span></td>
+
+							<!-- Experience -->
+							<td class="fw-semibold text-dark" th:text="${j.experience}">2 Years</td>
+
+							<!-- Key Skills -->
+							<td><span class="badge bg-light text-dark border px-2 py-1" th:text="${j.keyskill}">Java, Spring Boot</span></td>
+
+							<!-- Applied Date -->
+							<td><span class="text-muted" th:text="${j.applieddate}">2026-04-10</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+
+	</main>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<html lang="en" th:replace="~{admin/adminbase :: layout(~{::main})}">
+<body>
+  <main class="p-4">
+
+    <!-- Minimal Custom CSS -->
+    <style>
+      .form-card {
+        max-width: 650px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .form-control:focus, .form-select:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+      }
+      .top-stat-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .top-stat-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.08) !important;
+      }
+    </style>
+
+    <!-- Top Summary Stats Cards (2 Cards) -->
+    <div class="row g-3 mb-4 justify-content-center">
+      <!-- Card 1: View Posted Jobs Link -->
+      <div class="col-12 col-md-5">
+        <a href="/admin/postedjob" class="text-decoration-none">
+          <div class="card border-0 shadow-sm rounded-3 p-3 bg-white top-stat-card">
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <p class="text-muted fw-medium mb-1 fs-7">Manage Listings</p>
+                <h5 class="fw-bold text-primary m-0">View Posted Jobs</h5>
+              </div>
+              <div class="bg-primary-subtle text-primary rounded-3 p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                <i class="fa-solid fa-list-check fs-4"></i>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Card 2: Quick Link to Dashboard -->
+      <div class="col-12 col-md-5">
+        <a href="/admin/admindashboard" class="text-decoration-none">
+          <div class="card border-0 shadow-sm rounded-3 p-3 bg-white top-stat-card">
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <p class="text-muted fw-medium mb-1 fs-7">Quick Navigation</p>
+                <h5 class="fw-bold text-success m-0">Go to Dashboard</h5>
+              </div>
+              <div class="bg-success-subtle text-success rounded-3 p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                <i class="bi bi-speedometer2 fs-3"></i>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Form Wrapper -->
+    <div class="d-flex justify-content-center">
+      <div class="card form-card border-0 shadow-sm rounded-3 p-4">
+
+        <!-- Header -->
+        <div class="text-center mb-3">
+          <div class="bg-primary-subtle text-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width: 50px; height: 50px;">
+            <i class="fa-solid fa-briefcase fs-4"></i>
+          </div>
+          <h2 class="fw-bold text-primary m-0">Post Job Details</h2>
+        </div>
+
+        <!-- Success Message Alert -->
+        <div th:if="${msg}" class="alert alert-success alert-dismissible fade show text-center py-2 mb-3" role="alert">
+          <i class="fa-solid fa-circle-check me-1"></i>
+          <small th:text="${msg}" class="fw-semibold"></small>
+        </div>
+
+        <hr class="text-secondary opacity-25 mb-4" />
+
+        <!-- Form Body -->
+        <form method="post" th:object="${jdto}">
+          <div class="row g-3">
+
+            <!-- Job Title -->
+            <div class="col-12">
+              <label class="form-label fw-semibold text-secondary">Job Title</label>
+              <input type="text" th:field="${jdto.title}" class="form-control" placeholder="e.g. Java Developer" required />
+            </div>
+
+            <!-- Description -->
+            <div class="col-12">
+              <label class="form-label fw-semibold text-secondary">Description</label>
+              <textarea th:field="${jdto.description}" class="form-control" rows="3" placeholder="Enter job requirements and details..." required></textarea>
+            </div>
+
+            <!-- Location & Salary (Side by Side) -->
+            <div class="col-md-6">
+              <label class="form-label fw-semibold text-secondary">Location</label>
+              <input type="text" th:field="${jdto.location}" class="form-control" placeholder="e.g. Lucknow / Remote" required />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-semibold text-secondary">Salary (₹)</label>
+              <input type="number" th:field="${jdto.salary}" class="form-control" placeholder="e.g. 500000" required />
+            </div>
+
+            <!-- Job Type & Last Date (Side by Side) -->
+            <div class="col-md-6">
+              <label class="form-label fw-semibold text-secondary">Job Type</label>
+              <select class="form-select" th:field="${jdto.jobtype}">
+                <option value="Full Time">Full Time</option>
+                <option value="Part Time">Part Time</option>
+                <option value="Internship">Internship</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-semibold text-secondary">Last Date to Apply</label>
+              <input type="date" th:field="${jdto.lastdate}" class="form-control" required />
+            </div>
+
+            <!-- Submit Button -->
+            <div class="col-12 mt-4">
+              <button type="submit" class="btn btn-primary w-100 fw-semibold py-2">
+                <i class="fa-solid fa-paper-plane me-1"></i> Post Job
+              </button>
+            </div>
+
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+  </main>
+</body>
+</html>

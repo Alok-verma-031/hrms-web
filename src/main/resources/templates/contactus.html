@@ -1,0 +1,272 @@
+<html lang="en" th:replace="~{base::layout(~{::main})}">
+<body>
+	<main>
+		<div class="container-fluid">
+        <!-- r1 -->
+        <div class="row">
+            <div class="col-sm-12 bgc-img p-4">
+                <div class="row">
+                    <div class="col-sm-3 brown mx-auto rounded-4 transparent-bgc text-center">
+                        <small>HR SYNERGY · CONTACT & ENQUIRY</small>
+                    </div>
+                    <h1 class="text-white text-center fw-bold my-2">Get In Touch With <span class="brown">HR</span></h1>
+                    <h1 class="brown text-center fw-bold">Synergy</h1>
+                    <small class="text-light text-center my-2">We are here to answer your questions and help your
+                        organization <br>grow.</small>
+                </div>
+            </div>
+        </div>
+        <!-- r2 -->
+        <div class="row d-flex justify-content-evenly p-5 neg-mar">
+            <div class="col-sm-5 bg-navyblue rounded-2 shadow p-4">
+                <div class="row m-0">
+                    <div class="col">
+                        <img src="./images/con-logo(1).png" alt="" class="img-fluid">
+                    </div>
+                </div>
+                <h5 class="text-white text-center mt-0 ">Contact Information</h5>
+                <p class="text-offwhite fs-01 text-center mb-3">Reach out through any channel below — our team <br>
+                    typically
+                    responds within one business day.</p>
+                <div class="row py-3 border-bottom">
+                    <div class="col-2">
+                        <div class="logo">
+                            <a href="#">
+                                <i class="fa-solid fa-location-dot" style="color:  #E8A33D;"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-10 text-light">
+                        <p class="mb-1 fw-bold  fs-01">COMPANY ADDRESS</p>
+                        <small class=" fs-01  text-offwhite mb-0">
+                            <a href="#" class="text-decoration-none text-offwhite"> 4th Floor, Synergy Towers, Vibhuti Khand, Gomti Nagar,
+                            Lucknow, Uttar Pradesh 226010</a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row py-3 border-bottom">
+                    <div class="col-2">
+                        <div class="logo">
+                            <a href="#">
+                                <i class="fa-solid fa-envelope" style="color:  #E8A33D;"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-10 text-light">
+                        <p class="mb-1 fw-bold  fs-01">EMAIL ADDRESS</p>
+                        <small class=" fs-01   mb-0">
+                            <a href="mailto:support@hrsynergy.com"
+                                class="text-offwhite text-decoration-none">support@hrsynergy.com</a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row py-3 border-bottom">
+                    <div class="col-2">
+                        <div class="logo">
+                            <a href="#">
+                                <i class="fa-solid fa-phone" style="color:  #E8A33D;"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-10 text-light">
+                        <p class="mb-1 fw-bold  fs-01">PHONE NUMBER</p>
+                        <small class=" fs-01   mb-0">
+                            <a href="tel:+91 5224567890" class="text-decoration-none text-offwhite">+91 522 456 7890</a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row py-3 border-bottom">
+                    <div class="col-2">
+                        <div class="logo">
+                            <a href="#">
+                                <i class="fa-solid fa-clock" style="color:  #E8A33D;"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-10 text-light">
+                        <p class="mb-1 fw-bold  fs-01">WORKING HOURS</p>
+                        <small class=" fs-01   mb-0">
+                            Mon – Sat, 9:30 AM – 6:30 PM IST
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 my-2 mx-auto">
+                        <div class="row">
+                            <div class="col">
+                                <div class="logo">
+                                    <a href="#">
+                                        <i class="fa-brands fa-linkedin-in" style="color:  #f7f6f5;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="logo">
+                                    <a href="#">
+                                        <i class="fa-brands fa-x-twitter" style="color:  #f8f8f7;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="logo">
+                                    <a href="#">
+                                        <i class="fa-brands fa-facebook-f" style="color:  #ffffff;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 shadow rounded-2 bg-white p-4">
+
+                <h4 class="fw-bold">Send Us an Enquiry</h4>
+                <p class="text-secondary mb-4">
+                    Fill in the form below and our team will get back to you shortly.
+                </p>
+
+                <form class="form-group" method="post" th:object="${edto}">
+
+                    <div class="input-group mb-4 border rounded-4 p-2">
+                        <span class="input-group-text bg-white border-0">
+                            <i class="fa-solid fa-user"></i>
+                        </span>
+                        <input type="text" class="form-control border-0 shadow-none" th:field="${edto.name}" required
+                            placeholder="Full Name">
+                    </div>
+
+                    <div class="input-group mb-4 border rounded-4 p-2">
+                        <span class="input-group-text bg-white border-0">
+                            <i class="fa-solid fa-tag"></i>
+                        </span>
+                        <input type="text" class="form-control border-0 shadow-none" th:field="${edto.address}"
+                            required placeholder="Address">
+                    </div>
+
+                    <div class="input-group mb-4 border rounded-4 p-2">
+                        <span class="input-group-text bg-white border-0">
+                            <i class="fa-solid fa-phone"></i>
+                        </span>
+                        <input type="text" class="form-control border-0 shadow-none" th:field="${edto.contactno}"
+                            required placeholder="Contact Number">
+                    </div>
+
+                    <div class="input-group mb-4 border rounded-4 p-2">
+                        <span class="input-group-text bg-white border-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </span>
+                        <input type="text" class="form-control border-0 shadow-none" th:field="${edto.emailaddress}" required
+                            placeholder="Email Address">
+                    </div>
+
+                    <div class="input-group mb-4 border rounded-4 p-2">
+                        <span class="input-group-text bg-white border-0 align-items-start pt-3">
+                            <i class="fa-solid fa-message"></i>
+                        </span>
+                        <textarea class="form-control border-0 shadow-none" rows="6" th:field="${edto.enquirytext}"
+                            placeholder="Your Message"></textarea>
+                    </div>
+
+                    <div th:if="${msg}">
+                        <h3 th:text="${msg}"></h3>
+                    </div>
+                    <div class="d-flex gap-3">
+
+                        <button type="submit" class="btn btn-warning rounded-pill px-4 py-3 fw-bold">
+                            Submit Enquiry
+                            <i class="fa-solid fa-paper-plane ms-2"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-outline-secondary rounded-pill px-4 py-3 fw-bold">
+                            <i class="fa-solid fa-arrow-left me-2"></i>
+                       		<a href="/index" class="text-decoration-none ">Back to Home</a>
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+        <!-- r3 -->
+        <div class="row p-5 bg-light">
+            <div class="col-sm-3 bg-offwhite rounded-4 mx-auto">
+                <h6 class="text-center">WHY REACH OUT</h6>
+            </div>
+            <div class="col-sm-12 text-center my-3">
+                <h3>Why Contact Us?</h3>
+                <p class="fs-01">Whatever stage your organization is at, HR Synergy is built to support you.</p>
+            </div>
+            <div class="col-sm-12">
+                <div class="row text-center">
+                    <div class="col-sm-3">
+                        <div class="card border-0 h-100">
+                            <div class="card-body shadow text-center rounded-4 p-3">
+                                <div class="row">
+                                    <div class="logo1 mx-auto">
+                                        <a href="#">
+                                            <i class="fa-solid fa-bolt" style="color:  #E8A33D;"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6>Fast Response</h6>
+                                <p class="fs-01">Our support desk acknowledges every enquiry within one business day.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card border-0 h-100">
+                            <div class="card-body shadow rounded-4 p-3">
+                                <div class="row">
+                                    <div class="logo1 mx-auto">
+                                        <a href="#">
+                                            <i class="fa-solid fa-user" style="color:  #E8A33D;"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6>Professional Support</h6>
+                                <p class="fs-01">Experienced HR consultants guide you through setup, queries, and best
+                                    practices.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card border-0 h-100">
+                            <div class="card-body shadow rounded-4 p-3">
+                                <div class="row">
+                                    <div class="logo1 mx-auto">
+                                        <a href="#">
+                                            <i class="fa-solid fa-users" style="color:  #E8A33D;"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6>Employee Assistance</h6>
+                                <p class="fs-01">Dedicated help for employee onboarding, payroll, and policy related
+                                    questions.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card border-0 h-100">
+                            <div class="card-body shadow rounded-4 p-3 ">
+                                <div class="row">
+                                    <div class="logo1 mx-auto">
+                                        <a href="#">
+                                            <i class="fa-solid fa-briefcase" style="color:  #E8A33D;"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h6>Recruitment Support</h6>
+                                <p class="fs-01">Guidance on hiring workflows, candidate tracking, and recruitment
+                                    automation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	</main>
+</body>
+</html>

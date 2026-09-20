@@ -1,0 +1,344 @@
+<html lang="en" th:replace="~{admin/adminbase :: layout(~{::main})}">
+<body>
+	<main class="p-0" style="background-color: #f8fafc; min-height: 100vh;">
+
+		<!-- Blue & White Theme Styling -->
+		<style>
+/* Base Theme Setup */
+:root {
+	--primary-blue: #2563eb;
+	--primary-dark: #1e3a8a;
+	--bg-card: #ffffff;
+	--text-main: #0f172a;
+	--text-muted: #64748b;
+}
+
+/* Modern Blue Hero Banner */
+.cp-hero-banner {
+	background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 50%, #3b82f6 100%);
+	color: #ffffff;
+	border-radius: 0 0 24px 24px;
+	padding: 36px 40px 64px 40px;
+	margin-bottom: -32px;
+	box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.2);
+}
+
+.cp-hero-icon {
+	background: rgba(255, 255, 255, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	color: #ffffff;
+	border-radius: 16px;
+	width: 56px;
+	height: 56px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Modern White Cards with Subtle Hover */
+.cp-stat-card {
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 18px;
+	padding: 20px 24px;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+	transition: all 0.25s ease-in-out;
+}
+
+.cp-stat-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 12px 20px -3px rgba(37, 99, 235, 0.1);
+	border-color: #bfdbfe;
+}
+
+.stat-icon-wrapper {
+	width: 44px;
+	height: 44px;
+	border-radius: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.25rem;
+}
+
+.icon-blue-primary { background: #eff6ff; color: #2563eb; }
+.icon-sky { background: #f0f9ff; color: #0284c7; }
+.icon-indigo { background: #eef2ff; color: #4f46e5; }
+.icon-teal { background: #f0fdf4; color: #0d9488; }
+
+.cp-badge-pill {
+	background: #f1f5f9;
+	color: #475569;
+	border-radius: 20px;
+	padding: 4px 10px;
+	font-size: 0.72rem;
+	font-weight: 600;
+	display: inline-block;
+}
+
+/* Table Card Container */
+.cp-table-container {
+	background: #ffffff;
+	border-radius: 20px;
+	border: 1px solid #e2e8f0;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+	padding: 24px;
+}
+
+.custom-table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+.custom-table thead th {
+	background-color: #f8fafc;
+	color: #1e3a8a;
+	font-size: 0.75rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	border-bottom: 2px solid #e2e8f0;
+	padding: 14px 16px;
+}
+
+.custom-table tbody tr {
+	transition: background-color 0.2s ease;
+}
+
+.custom-table tbody tr:hover {
+	background-color: #f0f7ff;
+}
+
+.custom-table tbody td {
+	padding: 16px;
+	border-bottom: 1px solid #f1f5f9;
+	vertical-align: middle;
+}
+
+/* Specific Badges & Components */
+.avatar-circle-blue {
+	width: 38px;
+	height: 38px;
+	background: #eff6ff;
+	color: #2563eb;
+	border: 1px solid #bfdbfe;
+	font-weight: 700;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.85rem;
+}
+
+.contact-badge {
+	background-color: #f8fafc;
+	border: 1px solid #e2e8f0;
+	color: #334155;
+	border-radius: 8px;
+	padding: 6px 12px;
+	font-size: 0.82rem;
+	font-weight: 500;
+}
+
+.date-badge {
+	background-color: #f1f5f9;
+	color: #475569;
+	border-radius: 6px;
+	padding: 4px 10px;
+	font-size: 0.8rem;
+	font-weight: 500;
+}
+
+.complaint-msg-cell {
+	max-width: 260px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #64748b;
+}
+
+.btn-delete-custom {
+	border: 1px solid #fee2e2;
+	background-color: #fef2f2;
+	color: #dc2626;
+	font-weight: 500;
+	transition: all 0.2s ease;
+}
+
+.btn-delete-custom:hover {
+	background-color: #dc2626;
+	color: #ffffff;
+}
+</style>
+
+		<!-- Top Hero Header -->
+		<div class="cp-hero-banner d-flex align-items-center justify-content-between">
+			<div class="d-flex align-items-center gap-3">
+				<div class="cp-hero-icon">
+					<i class="bi bi-shield-exclamation fs-3"></i>
+				</div>
+				<div>
+					<h3 class="fw-bold mb-1">Complaints Management</h3>
+					<p class="text-white-50 mb-0 fs-7">Review and manage reported issues from user accounts</p>
+				</div>
+			</div>
+			<a href="/admin/admindashboard" class="btn btn-light text-primary rounded-pill px-4 fw-semibold btn-sm shadow-sm">
+				<i class="bi bi-arrow-left me-1"></i> Dashboard
+			</a>
+		</div>
+
+		<div class="px-4 mt-5">
+			<!-- 4 Blue Accent Stat Cards -->
+			<div class="row g-3 mb-4">
+				<!-- Card 1 -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="cp-stat-card d-flex align-items-center justify-content-between">
+						<div>
+							<p class="small text-muted mb-1 fw-semibold text-uppercase">Total Complaints</p>
+							<h3 class="fw-bold text-dark mb-1" th:text="${comp != null ? comp.size() : 0}">0</h3>
+							<span class="cp-badge-pill">All Records</span>
+						</div>
+						<div class="stat-icon-wrapper icon-blue-primary">
+							<i class="bi bi-file-earmark-text-fill"></i>
+						</div>
+					</div>
+				</div>
+
+				<!-- Card 2 -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="cp-stat-card d-flex align-items-center justify-content-between">
+						<div>
+							<p class="small text-muted mb-1 fw-semibold text-uppercase">Pending Action</p>
+							<h3 class="fw-bold text-dark mb-1" th:text="${comp != null ? comp.size() : 0}">0</h3>
+							<span class="cp-badge-pill">Needs Review</span>
+						</div>
+						<div class="stat-icon-wrapper icon-sky">
+							<i class="bi bi-hourglass-split"></i>
+						</div>
+					</div>
+				</div>
+
+				<!-- Card 3 -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="cp-stat-card d-flex align-items-center justify-content-between">
+						<div>
+							<p class="small text-muted mb-1 fw-semibold text-uppercase">Priority Level</p>
+							<h3 class="fw-bold text-dark mb-1">High</h3>
+							<span class="cp-badge-pill">Attention Needed</span>
+						</div>
+						<div class="stat-icon-wrapper icon-indigo">
+							<i class="bi bi-flag-fill"></i>
+						</div>
+					</div>
+				</div>
+
+				<!-- Card 4 -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<a href="/admin/admindashboard" class="text-decoration-none">
+						<div class="cp-stat-card d-flex align-items-center justify-content-between">
+							<div>
+								<p class="small text-muted mb-1 fw-semibold text-uppercase">Navigation</p>
+								<h3 class="fw-bold text-dark mb-1">Dashboard</h3>
+								<span class="cp-badge-pill">Quick Return</span>
+							</div>
+							<div class="stat-icon-wrapper icon-teal">
+								<i class="bi bi-speedometer2"></i>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<!-- Success / Alert Message -->
+			<div th:if="${msg}" class="alert alert-primary border-0 shadow-sm alert-dismissible fade show text-center py-2 mb-4 rounded-3" role="alert">
+				<i class="bi bi-info-circle-fill me-2"></i>
+				<span th:text="${msg}" class="fw-medium"></span>
+			</div>
+
+			<!-- Complaints Table Card -->
+			<div class="cp-table-container mb-4">
+				<!-- Header inside card -->
+				<div class="d-flex align-items-center justify-content-between mb-3">
+					<div class="d-flex align-items-center gap-2">
+						<div class="stat-icon-wrapper icon-blue-primary" style="width: 36px; height: 36px;">
+							<i class="bi bi-card-checklist fs-6"></i>
+						</div>
+						<div>
+							<h6 class="fw-bold text-dark mb-0">Complaint Records</h6>
+							<small class="text-muted">List of submitted issues by registered users</small>
+						</div>
+					</div>
+					<span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill fw-semibold fs-7" 
+						  th:text="${(comp != null ? comp.size() : 0) + ' Total'}">0 Total</span>
+				</div>
+
+				<hr class="text-secondary opacity-10 my-3" />
+
+				<!-- Table -->
+				<div class="table-responsive">
+					<table class="table custom-table align-middle text-nowrap m-0">
+						<thead>
+							<tr>
+								<th class="text-center">ID</th>
+								<th>User Name</th>
+								<th>Contact Number</th>
+								<th>Subject</th>
+								<th>Complaint Details</th>
+								<th>Posted Date</th>
+								<th class="text-center">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="c : ${comp}">
+								<!-- ID -->
+								<td class="text-center fw-medium text-muted" th:text="${'#' + c.id}">#1</td>
+
+								<!-- Name with Blue Avatar -->
+								<td>
+									<div class="d-flex align-items-center gap-2">
+										<div class="avatar-circle-blue" th:text="${#strings.substring(c.name, 0, 1).toUpperCase()}">U</div>
+										<span class="fw-semibold text-dark" th:text="${c.name}">User Name</span>
+									</div>
+								</td>
+
+								<!-- Contact No -->
+								<td>
+									<span class="contact-badge">
+										<i class="bi bi-telephone text-primary me-1"></i>
+										<span th:text="${c.contactno}">+91 9876543210</span>
+									</span>
+								</td>
+
+								<!-- Subject -->
+								<td class="fw-semibold text-primary" th:text="${c.subject}">Technical Issue</td>
+
+								<!-- Complaint Details -->
+								<td>
+									<div class="complaint-msg-cell" th:text="${c.responsetext}" th:title="${c.responsetext}">Complaint message details...</div>
+								</td>
+
+								<!-- Posted Date -->
+								<td>
+									<span class="date-badge">
+										<i class="bi bi-calendar3 me-1"></i>
+										<span th:text="${c.posteddate}">2026-08-16</span>
+									</span>
+								</td>
+
+								<!-- Action Delete -->
+								<td class="text-center">
+									<a th:href="@{/admin/deletecomp(id=${c.id})}" 
+									   class="btn btn-delete-custom btn-sm px-3 rounded-2"
+									   onclick="return confirm('Are you sure you want to delete this complaint?');">
+										<i class="bi bi-trash me-1"></i>Delete
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

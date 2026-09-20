@@ -1,0 +1,270 @@
+<html lang="en" th:replace="~{admin/adminbase :: layout(~{::main})}">
+<body>
+	<main class="p-0">
+
+		<!-- Custom Modern Styling matching Image Theme -->
+<style>
+.eq-hero-banner {
+	background: linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #0c4a6e 100%);
+	color: #ffffff;
+	border-radius: 0 0 24px 24px;
+	padding: 30px 40px 60px 40px;
+	margin-bottom: -35px;
+}
+
+.eq-stat-card {
+	border-radius: 16px;
+	padding: 22px;
+	color: #ffffff;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+	transition: transform 0.2s ease;
+}
+
+.eq-stat-card:hover {
+	transform: translateY(-3px);
+}
+
+.eq-card-cyan {
+	background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+}
+
+.eq-card-blue {
+	background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.eq-card-purple {
+	background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+}
+
+.eq-card-green {
+	background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+}
+
+.eq-badge-pill {
+	background: rgba(255, 255, 255, 0.25);
+	color: #ffffff;
+	border-radius: 20px;
+	padding: 4px 12px;
+	font-size: 0.75rem;
+	font-weight: 600;
+	display: inline-block;
+	margin-top: 10px;
+}
+
+.eq-table-container {
+	background: #ffffff;
+	border-radius: 20px;
+	box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+	padding: 24px;
+}
+
+.eq-table-header-bg {
+	background: linear-gradient(90deg, #0284c7 0%, #0369a1 100%);
+	color: #ffffff;
+}
+
+.eq-table-header-bg th {
+	color: #ffffff !important;
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	border: none;
+	padding: 14px 16px;
+}
+
+.avatar-circle-cyan {
+	width: 36px;
+	height: 36px;
+	background-color: #0284c7;
+	color: #ffffff;
+	font-weight: 600;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.85rem;
+}
+
+.contact-badge {
+	background-color: #e0f2fe;
+	color: #0369a1;
+	border-radius: 20px;
+	padding: 4px 12px;
+	font-size: 0.82rem;
+	font-weight: 600;
+}
+
+.address-badge {
+	background-color: #fef2f2;
+	color: #dc2626;
+	border-radius: 8px;
+	padding: 4px 8px;
+	font-size: 0.82rem;
+}
+
+.enquiry-text-cell {
+	max-width: 250px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+</style>
+
+		<!-- Top Hero Header -->
+		<div class="eq-hero-banner d-flex align-items-center justify-content-between">
+			<div class="d-flex align-items-center gap-3">
+				<div class="bg-white bg-opacity-25 rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 54px; height: 54px;">
+					<i class="bi bi-question-circle-fill fs-3 text-white"></i>
+				</div>
+				<div>
+					<h2 class="fw-bold mb-0">Enquiries List</h2>
+					<p class="text-white-50 mb-0 fs-7">Manage and respond to user questions and inquiries</p>
+				</div>
+			</div>
+			<a href="/admin/admindashboard" class="btn btn-light rounded-pill px-4 fw-semibold text-cyan shadow-sm" style="color: #0284c7;">
+				<i class="bi bi-arrow-left me-1"></i> Back to Dashboard
+			</a>
+		</div>
+
+		<div class="px-4 mt-5">
+			<!-- 4 Stat Cards -->
+			<div class="row g-3 mb-4">
+				<!-- Card 1: Total Enquiries -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="eq-stat-card eq-card-cyan">
+						<div class="mb-2"><i class="bi bi-patch-question-fill fs-4"></i></div>
+						<h2 class="fw-bold mb-0" th:text="${enquiry != null ? enquiry.size() : 0}">0</h2>
+						<p class="small text-white-50 mb-1 fw-semibold text-uppercase">Total Enquiries</p>
+						<span class="eq-badge-pill">All Submissions</span>
+					</div>
+				</div>
+
+				<!-- Card 2: Contact Leads -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="eq-stat-card eq-card-blue">
+						<div class="mb-2"><i class="bi bi-person-lines-fill fs-4"></i></div>
+						<h2 class="fw-bold mb-0" th:text="${enquiry != null ? enquiry.size() : 0}">0</h2>
+						<p class="small text-white-50 mb-1 fw-semibold text-uppercase">Active Leads</p>
+						<span class="eq-badge-pill">Contact Info</span>
+					</div>
+				</div>
+
+				<!-- Card 3: New Requests -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="eq-stat-card eq-card-purple">
+						<div class="mb-2"><i class="bi bi-envelope-open-fill fs-4"></i></div>
+						<h2 class="fw-bold mb-0">Active</h2>
+						<p class="small text-white-50 mb-1 fw-semibold text-uppercase">Review Status</p>
+						<span class="eq-badge-pill">In Progress</span>
+					</div>
+				</div>
+
+				<!-- Card 4: Quick Dashboard Link -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<a href="/admin/admindashboard" class="text-decoration-none">
+						<div class="eq-stat-card eq-card-green">
+							<div class="mb-2"><i class="bi bi-speedometer2 fs-4"></i></div>
+							<h2 class="fw-bold mb-0">Dashboard</h2>
+							<p class="small text-white-50 mb-1 fw-semibold text-uppercase">Quick Navigation</p>
+							<span class="eq-badge-pill">Go Back</span>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<!-- Success / Alert Message -->
+			<div th:if="${msg}" class="alert alert-info alert-dismissible fade show text-center py-2 mb-4 rounded-3" role="alert">
+				<i class="bi bi-info-circle-fill me-1"></i>
+				<span th:text="${msg}" class="fw-semibold"></span>
+			</div>
+
+			<!-- Enquiry Table Card Wrapper -->
+			<div class="eq-table-container mb-4">
+				<!-- Inner Card Header -->
+				<div class="d-flex align-items-center justify-content-between mb-3">
+					<div class="d-flex align-items-center gap-2">
+						<div class="bg-info-subtle text-info rounded-3 p-2 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+							<i class="bi bi-chat-left-dots-fill fs-5"></i>
+						</div>
+						<div>
+							<h5 class="fw-bold text-dark mb-0">Enquiry Records</h5>
+							<small class="text-muted">All submitted user inquiries</small>
+						</div>
+					</div>
+					<span class="badge bg-info text-dark px-3 py-2 rounded-pill fs-7" th:text="${(enquiry != null ? enquiry.size() : 0) + ' Records'}">0 Records</span>
+				</div>
+
+				<hr class="text-secondary opacity-10 mb-4" />
+
+				<!-- Table -->
+				<div class="table-responsive">
+					<table class="table align-middle text-nowrap m-0">
+						<thead>
+							<tr class="eq-table-header-bg">
+								<th class="text-center rounded-start">S.NO.</th>
+								<th>NAME</th>
+								<th>CONTACT NO</th>
+								<th>EMAIL ADDRESS</th>
+								<th>ADDRESS</th>
+								<th>ENQUIRY TEXT</th>
+								<th class="text-center rounded-end">ACTION</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="enq, enqStat : ${enquiry}">
+								<!-- Serial Number -->
+								<td class="text-center fw-semibold text-muted" th:text="${enqStat.count}">1</td>
+
+								<!-- Name with Circle Avatar -->
+								<td>
+									<div class="d-flex align-items-center gap-2">
+										<div class="avatar-circle-cyan" th:text="${#strings.substring(enq.name, 0, 1).toUpperCase()}">U</div>
+										<span class="fw-bold text-dark" th:text="${enq.name}">John Doe</span>
+									</div>
+								</td>
+
+								<!-- Contact No -->
+								<td>
+									<span class="contact-badge">
+										<i class="bi bi-telephone-fill me-1"></i>
+										<span th:text="${enq.contactno}">+91 9876543210</span>
+									</span>
+								</td>
+
+								<!-- Email Address -->
+								<td>
+									<i class="bi bi-envelope-fill text-muted me-1"></i>
+									<span class="text-dark fw-medium" th:text="${enq.emailaddress}">john@example.com</span>
+								</td>
+
+								<!-- Address -->
+								<td>
+									<span class="address-badge">
+										<i class="bi bi-geo-alt-fill me-1"></i>
+										<span th:text="${enq.address}">Lucknow</span>
+									</span>
+								</td>
+
+								<!-- Enquiry Text (Truncated) -->
+								<td>
+									<div class="enquiry-text-cell text-muted" th:text="${enq.enquirytext}" th:title="${enq.enquirytext}">Enquiry details...</div>
+								</td>
+
+								<!-- Action Delete Button -->
+								<td class="text-center">
+									<a th:href="@{/admin/deleteenq(id=${enq.id})}"
+									   class="btn btn-outline-danger btn-sm px-3 rounded-2"
+									   onclick="return confirm('Are you sure you want to delete this enquiry?');">
+										<i class="bi bi-trash-fill me-1"></i>Delete
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</main>
+</body>
+</html>

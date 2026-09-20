@@ -1,0 +1,176 @@
+<html lang="en" th:replace="~{admin/adminbase :: layout(~{::main})}">
+<body>
+ <main>
+ 	<div class="dashboard-container">
+    
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+      <div class="hero-text">
+        <span class="hero-tag">★ Admin Portal</span>
+        <h2>Welcome to Admin Dashboard</h2>
+        <p style="font-size: 0.88rem; opacity: 0.9;">Manage job postings, track jobseekers, handle user enquiries, and monitor all platform activity from one dashboard.</p>
+        <div class="hero-buttons">
+          <button class="btn-white"><i class="fa-solid fa-plus-circle"></i> <a href="/admin/postjob" class="text-decoration-none text-dark"> Post New Job</a></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon" style="background: #3b82f6;"><i class="fa-solid fa-users"></i></div>
+        <div>
+        <a href="/admin/jobseeker" class="text-decoration-none text-dark">
+          <strong style="font-size: 0.9rem;" th:text="${usercounter}">0</strong>
+          <p style="font-size: 0.75rem; color: var(--text-muted);">Total Jobseekers</p>
+        </a>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon" style="background: #10b981;"><i class="fa-solid fa-briefcase"></i></div>
+        <div>
+        <a href="/admin/postedjob" class="text-decoration-none text-dark">
+          <strong style="font-size: 0.9rem;" th:text="${postedjobcounter}">0</strong>
+          <p style="font-size: 0.75rem; color: var(--text-muted);">Posted Jobs</p>
+        </a>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon" style="background: #8b5cf6;"><i class="fa-solid fa-file-signature"></i></div>
+        <div>
+        <a href="/admin/appliedjobs" class="text-decoration-none text-dark">
+          <strong style="font-size: 0.9rem;" th:text="${appliedjobcounter}">0</strong>
+          <p style="font-size: 0.75rem; color: var(--text-muted);">Applied Jobs</p>
+       </a>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon" style="background: #ef4444;"><i class="fa-solid fa-comments"></i></div>
+        <div>
+        <a href="/admin/viewcomplaint" class="text-decoration-none text-dark">
+          <strong style="font-size: 0.9rem;" th:text="${complaintcounter}">0</strong>
+          <p style="font-size: 0.75rem; color: var(--text-muted);">Complaints</p>
+       </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions Grid -->
+    <h3 style="margin-bottom: 15px; font-size: 1.1rem;"><i class="fa-solid fa-layer-group"></i> Quick Actions</h3>
+    <div class="actions-grid">
+      
+      <div class="action-card">
+        <div>
+          <div class="stat-icon" style="background: #3b82f6; margin: 0 auto;"><i class="fa-solid fa-plus"></i></div>
+          <h4 style="margin-top: 12px; font-size: 0.95rem;">Post New Job</h4>
+          <p>Create and publish new job vacancies on the portal.</p>
+        </div>
+        <button class="action-btn" style="background: #3b82f6;"><a href="/admin/postjob" class="text-decoration-none text-white">Post Job</a></button>
+      </div>
+      
+      <div class="action-card">
+        <div>
+          <div class="stat-icon" style="background: #10b981; margin: 0 auto;"><i class="fa-solid fa-list-check"></i></div>
+          <h4 style="margin-top: 12px; font-size: 0.95rem;">View Posted Jobs</h4>
+          <p>Check active job listings, edit details, or remove jobs.</p>
+        </div>
+        <button class="action-btn" style="background: #10b981;"><a href="/admin/postedjob" class="text-decoration-none text-white">Posted Jobs</a></button>
+      </div>
+
+      <div class="action-card">
+        <div>
+          <div class="stat-icon" style="background: #8b5cf6; margin: 0 auto;"><i class="fa-solid fa-users"></i></div>
+          <h4 style="margin-top: 12px; font-size: 0.95rem;">Manage Seekers</h4>
+          <p>View registered candidate details and profiles.</p>
+        </div>
+        <button class="action-btn" style="background: #8b5cf6;"><a href="/admin/jobseeker" class="text-decoration-none text-white">Jobseekers</a></button>
+      </div>
+
+      <div class="action-card">
+        <div>
+          <div class="stat-icon" style="background: #f59e0b; margin: 0 auto;"><i class="fa-solid fa-envelope-open-text"></i></div>
+          <h4 style="margin-top: 12px; font-size: 0.95rem;">View Enquiries</h4>
+          <p>Read and respond to enquiries sent by visitors.</p>
+        </div>
+        <button class="action-btn" style="background: #f59e0b;"><a href="/admin/enquiry" class="text-decoration-none text-white">Check Enquiries</a></button>
+      </div>
+
+    </div>
+
+    <!-- Additional Management Actions Grid -->
+    <div class="actions-grid" style="margin-top: 20px;">
+
+      <div class="action-card">
+        <div>
+          <div class="stat-icon" style="background: #ec4899; margin: 0 auto;"><i class="fa-solid fa-comment-dots"></i></div>
+          <h4 style="margin-top: 12px; font-size: 0.95rem;">View Feedbacks</h4>
+          <p>Monitor reviews and feedbacks provided by users.</p>
+        </div>
+        <button class="action-btn" style="background: #ec4899;"><a href="/admin/viewfeedback" class="text-decoration-none text-white">Feedbacks</a></button>
+      </div>
+
+      <div class="action-card">
+        <div>
+          <div class="stat-icon" style="background: #ef4444; margin: 0 auto;"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <h4 style="margin-top: 12px; font-size: 0.95rem;">View Complaints</h4>
+          <p>Track complaints submitted by applicants.</p>
+        </div>
+        <button class="action-btn" style="background: #ef4444;"><a href="/admin/viewcomplaint" class="text-decoration-none text-white">Complaints</a></button>
+      </div>
+
+      <div class="action-card">
+        <div>
+          <div class="stat-icon" style="background: #475569; margin: 0 auto;"><i class="fa-solid fa-lock"></i></div>
+          <h4 style="margin-top: 12px; font-size: 0.95rem;">Change Password</h4>
+          <p>Update administrative password and credentials.</p>
+        </div>
+        <button class="action-btn" style="background: #475569;"><a href="/admin/changeadminpwd" class="text-decoration-none text-white">Change Password</a></button>
+      </div>
+
+      <div class="action-card">
+        <div>
+          <div class="stat-icon" style="background: #dc2626; margin: 0 auto;"><i class="fa-solid fa-power-off"></i></div>
+          <h4 style="margin-top: 12px; font-size: 0.95rem;">Logout System</h4>
+          <p>Safely log out from the Admin Control Panel.</p>
+        </div>
+        <button class="action-btn" style="background: #dc2626;"><a href="/logout" class="text-decoration-none text-white">Logout</a></button>
+      </div>
+
+    </div>
+
+    <!-- Admin Activity & System Support -->
+    <div class="grid-2col" style="margin-top: 20px;">
+      <div class="card">
+        <h4 style="font-size: 0.95rem;"><i class="fa-solid fa-clock-rotate-left"></i> System Activity</h4>
+        <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; gap: 12px; align-items: center; background: #f9fafb; padding: 10px; border-radius: 8px;">
+            <div class="stat-icon" style="background: #3b82f6; width: 36px; height: 36px; font-size: 0.85rem;"><i class="fa-solid fa-user-plus"></i></div>
+            <div>
+              <strong style="font-size: 0.85rem;">Jobseekers Management</strong>
+              <p style="font-size: 0.75rem; color: var(--text-muted);">Manage candidate profiles and active user logs</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: center; background: #f9fafb; padding: 10px; border-radius: 8px;">
+            <div class="stat-icon" style="background: #10b981; width: 36px; height: 36px; font-size: 0.85rem;"><i class="fa-solid fa-briefcase"></i></div>
+            <div>
+              <strong style="font-size: 0.85rem;">Job Applications</strong>
+              <p style="font-size: 0.75rem; color: var(--text-muted);">Review incoming job applications</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="support-card">
+        <h4 style="font-size: 0.95rem;">Portal Control</h4>
+        <p style="font-size: 0.8rem; margin: 8px 0 15px; opacity: 0.9;">Need to publish a new job vacancy?</p>
+        <button class="btn-white" style="width: 100%; font-size: 0.85rem;"><i class="fa-solid fa-plus-circle"></i><a href="/admin/postjob" class="text-decoration-none text-dark"> Create Job Post</a></button>
+      </div>
+    </div>
+
+  </div>
+ </main>
+</body>
+</html>

@@ -1,0 +1,747 @@
+ <!DOCTYPE html>
+<html lang="en" th:fragment="layout(usercontent)">
+<!-- [Head] start -->
+<style>
+        .form-card {
+            max-width: 520px;
+            margin: 2.5rem auto;
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.1), 0 8px 10px -6px rgba(14, 165, 233, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 20px 30px -10px rgba(37, 99, 235, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 1.8rem;
+            color: #1e3a8a;
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: -0.5px;
+        }
+
+        .alert-custom {
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            border: 1.5px solid #bfdbfe;
+            border-radius: 10px;
+            padding: 0.85rem 1rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            font-size: 0.925rem;
+        }
+
+        .form-control, .form-select {
+            border-radius: 10px;
+            border: 2px solid #cbd5e1;
+            padding: 0.75rem 1rem;
+            color: #0f172a;
+            font-size: 0.95rem;
+            background-color: #f8fafc;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: #ffffff;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+            outline: none;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 0.85rem 1.5rem;
+            font-weight: 700;
+            font-size: 1rem;
+            width: 100%;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+            box-shadow: 0 6px 20px 0 rgba(37, 99, 235, 0.55);
+            transform: translateY(-1px);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+    </style>
+<head>
+  <title>Job Seeker Dashboard</title>
+  <!-- [Meta] -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+<!--   [Favicon] icon
+ -->  <link rel="icon" href="" type="image/x-icon">
+
+<!--   data tables css
+ -->  <link rel="stylesheet" href='/user/assets/css/plugins/dataTables.bootstrap5.min.css' >
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!--   [Google Font] Family
+ -->  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap"
+    id="main-font-link">
+<!--   [Tabler Icons] https://tablericons.com -->
+  <link rel="stylesheet" href='/user/assets/fonts/tabler-icons.min.css' >
+<!--   [Feather Icons] https://feathericons.com
+ -->  <link rel="stylesheet" href='/user/assets/fonts/feather.css' ><!-- 
+  [Font Awesome Icons] https://fontawesome.com/icons
+   --><link rel="stylesheet" href='/user/assets/fonts/fontawesome.css' ><!-- 
+  [Material Icons] https://fonts.google.com/icons
+   --><link rel="stylesheet" href='/user/assets/fonts/material.css' >
+<!--   [Template CSS Files]
+ -->  <link rel="stylesheet" href='/user/assets/css/style.css'  id="main-style-link">
+  <link rel="stylesheet" href='/user/assets/css/style-preset.css' >
+  <style>
+  .light-blue
+  {
+  background-color:rgba(19, 75, 164,0.6);
+  }
+  </style>
+  <!-- Bootstrap Icons CDN (Icons load hone ke liye ye link zaroori hai) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-blue: #3b82f6;
+      --primary-purple: #4338ca;
+      --gradient-hero: linear-gradient(135deg, #3b82f6 0%, #4338ca 100%);
+      --bg-gray: #f3f4f6;
+      --card-bg: #ffffff;
+      --text-dark: #1f2937;
+      --text-muted: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-gray);
+      color: var(--text-dark);
+      /* padding: 30px; */
+      min-height: 100vh;
+    }
+
+    .dashboard-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: var(--gradient-hero);
+      color: white;
+      border-radius: 14px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(67, 56, 202, 0.15);
+      margin-bottom: 25px;
+    }
+
+    .hero-tag {
+      font-size: 0.8rem;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .hero-text h2 {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn-white {
+      background: #ffffff;
+      color: var(--primary-purple);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-trans {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Stats Row */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 15px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+    }
+
+    .stat-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    /* Quick Actions */
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .action-card {
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .action-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin: 10px 0 18px;
+      line-height: 1.4;
+    }
+
+    .action-btn {
+      width: 100%;
+      padding: 9px;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Two Column Layout */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Application Progress Line */
+    .progress-tracker {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      margin: 35px 15px 15px;
+    }
+
+    .progress-tracker::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #e5e7eb;
+      z-index: 1;
+      transform: translateY(-50%);
+    }
+
+    .step {
+      position: relative;
+      z-index: 2;
+      background: white;
+      padding: 0 8px;
+      text-align: center;
+    }
+
+    .step-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .step.completed .step-icon {
+      background: var(--primary-purple);
+      color: white;
+    }
+
+    .step span {
+      font-size: 0.75rem;
+      display: block;
+      font-weight: 600;
+    }
+
+    /* Checklist */
+    .checklist {
+      list-style: none;
+      margin-top: 15px;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+      background: #f9fafb;
+      padding: 10px 12px;
+      border-radius: 8px;
+    }
+
+    .checklist i {
+      color: #10b981;
+    }
+
+    /* Support Card */
+    .support-card {
+      background: var(--gradient-hero);
+      color: white;
+      padding: 22px;
+      border-radius: 12px;
+    }
+  </style>
+   <style>
+        .profile-container {
+            max-width: 850px;
+            margin: 2.5rem auto;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            border: 1px solid #eef2f6;
+        }
+
+        /* Purple-Blue Gradient Header */
+        .profile-header-card {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #6366f1 100%);
+            padding: 2.5rem 2rem;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile-header-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .profile-header-subtitle {
+            margin-top: 0.3rem;
+            font-size: 0.95rem;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+
+        .profile-avatar-circle {
+            width: 55px;
+            height: 55px;
+            background-color: #ffffff;
+            color: #4f46e5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Body Content & Grid Layout */
+        .profile-body {
+            padding: 2.5rem;
+        }
+
+        .field-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            height: 100%;
+            transition: all 0.2s ease;
+        }
+
+        .field-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .field-label {
+            font-size: 0.825rem;
+            color: #64748b;
+            font-weight: 500;
+            margin-bottom: 0.35rem;
+            display: block;
+        }
+
+        .field-value {
+            font-size: 1rem;
+            color: #0f172a;
+            font-weight: 700;
+            margin: 0;
+            word-break: break-word;
+        }
+
+        /* Bottom Action Buttons */
+        .profile-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .btn-action {
+            border-radius: 8px;
+            padding: 0.6rem 1.4rem;
+            font-weight: 600;
+            font-size: 0.925rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-edit {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+
+        .btn-edit:hover {
+            background-color: #1d4ed8;
+            color: #ffffff;
+        }
+
+        .btn-password {
+            background-color: #ffb703;
+            color: #000000;
+        }
+
+        .btn-password:hover {
+            background-color: #fb8500;
+            color: #000000;
+        }
+
+        .btn-back {
+            background-color: #64748b;
+            color: #ffffff;
+        }
+
+        .btn-back:hover {
+            background-color: #475569;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<!-- [Head] end
+[Body] Start
+ -->
+<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
+  <!-- [ Pre-loader ] start -->
+  <div class="loader-bg">
+    <div class="loader-track">
+      <div class="loader-fill"></div>
+    </div>
+  </div>
+ <!--  [ Pre-loader ] End
+  [ Sidebar Menu ] start -->
+  <nav class="pc-sidebar">
+    <div class="navbar-wrapper">
+      <div class="m-header">
+        <a href="/user/userdash" class="b-brand text-primary">
+          <!-- ========   Change your logo from here   ============ -->
+          Karam-HRMS
+        </a>
+      </div>
+      <div class="navbar-content ">
+        <ul class="pc-navbar py-4 ">
+          <li class="pc-item">
+            <a href="/user/userdash" class=" pc-link">
+              <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
+              <span class="pc-mtext">Dashboard</span>
+            </a>
+          </li>
+
+          <li class="pc-item pc-caption">
+            <label>Manage</label>
+            <i class="ti ti-dashboard"></i>
+          </li>
+        
+          <li class="pc-item">
+            <a href="/user/viewjobs" class="pc-link">
+              <span class="pc-micon"><i class="ti ti-typography"></i></span>
+              <span class="pc-mtext">View Jobs</span>
+            </a>
+          </li>
+          <li class="pc-item">
+            <a href="/user/giveresponse" class="pc-link">
+              <span class="pc-micon"><i class="ti ti-typography"></i></span>
+              <span class="pc-mtext">Give Response</span>
+            </a>
+          </li>
+          <li class="pc-item">
+            <a href="/user/viewprofile" class="pc-link">
+              <span class="pc-micon"><i class="ti ti-typography"></i></span>
+              <span class="pc-mtext">View Profile</span>
+            </a>
+          </li>
+          
+          <li class="pc-item  pc-caption">
+            <label>Actions</label>
+            <i class="ti ti-news"></i>
+          </li>
+          <li class="pc-item">
+            <a href="/user/changepwd" class="pc-link">
+              <span class="pc-micon"><i class="ti ti-lock"></i></span>
+              <span class="pc-mtext">Change Password</span>
+            </a>
+          </li>
+          <li class="pc-item">
+            <a href="/user/logout" class="pc-link">
+              <span class="pc-micon"> <i class="ti ti-power"></i></span>
+              <span class="pc-mtext">Logout</span>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+ <!--  [ Sidebar Menu ] end [ Header Topbar ] start -->
+  <header class="pc-header">
+    <div class="header-wrapper"> <!-- [Mobile Media Block] start -->
+      <div class="me-auto pc-mob-drp">
+        <ul class="list-unstyled">
+        <!--   ======= Menu collapse Icon ===== -->
+          <li class="pc-h-item pc-sidebar-collapse">
+            <a href="#" class="pc-head-link ms-0" id="sidebar-hide">
+              <i class="ti ti-menu-2"></i>
+            </a>
+          </li>
+          <li class="pc-h-item pc-sidebar-popup">
+            <a href="#" class="pc-head-link ms-0" id="mobile-collapse">
+              <i class="ti ti-menu-2"></i>
+            </a>
+          </li>
+          <li class="dropdown pc-h-item d-inline-flex d-md-none">
+            <a class="pc-head-link dropdown-toggle arrow-none m-0" data-bs-toggle="dropdown" href="#" role="button"
+              aria-haspopup="false" aria-expanded="false">
+              <i class="ti ti-search"></i>
+            </a>
+            <div class="dropdown-menu pc-h-dropdown drp-search">
+              <form class="px-3">
+                <div class="form-group mb-0 d-flex align-items-center">
+                  <i data-feather="search"></i>
+                  <input type="search" class="form-control border-0 shadow-none" placeholder="hiii">
+                </div>
+              </form>
+            </div>
+          </li>
+          <li class="pc-h-item d-none d-md-inline-flex">
+            <form class="header-search">
+              <i data-feather="search" class="icon-search"></i>
+              <input type="search" class="form-control" placeholder="Search here. . .">
+            </form>
+          </li>
+        </ul>
+      </div>
+      <!-- [Mobile Media Block end] -->
+      <div class="ms-auto">
+        <ul class="list-unstyled">
+          
+          <li class="dropdown pc-h-item header-user-profile">
+            <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button"
+              aria-haspopup="false" data-bs-auto-close="outside" aria-expanded="false">
+              <img src='/user/assets/images/user/avatar-2.jpg'  alt="user-image" class="user-avtar">
+              <span>Job Seeker</span>
+            </a>
+            <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
+              <div class="dropdown-header">
+                <div class="d-flex mb-1">
+                  <div class="flex-shrink-0">
+                    <img src='/user/assets/images/user/avatar-2.jpg'  alt="user-image"
+                      class="user-avtar wid-35">
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <h6 class="mb-1">Job Seeker</h6>
+                    <span>Name</span>
+                  </div>
+                  LOGOUT
+                  <a href="#" class="pc-head-link bg-transparent"><i class="ti ti-power text-danger"></i></a>
+                </div>
+              </div>
+              
+              <div class="tab-content" id="mysrpTabContent">
+                <div class="tab-pane fade show active" id="drp-tab-1" role="tabpanel" aria-labelledby="drp-t1"
+                  tabindex="0">
+                  <a href="#" class="dropdown-item">
+                    <i class="ti ti-lock"></i>
+                    <span>Change Password</span>
+                  </a>
+                  
+                  <a href="/user/logout" class="dropdown-item">
+                    <i class="ti ti-power"></i>
+                    <span>Logout</span>
+                  </a>
+                </div>
+                
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <!-- [ Header ] end
+
+
+
+  [ Main Content ] start -->
+  <div class="pc-container">
+    <div class="pc-content">
+      <div th:replace="${usercontent}"></div>
+    </div>
+  </div>
+ <!--  [ Main Content ] end -->
+  <footer class="pc-footer">
+    <div class="footer-wrapper container-fluid">
+      <div class="row">
+        <div class="col-sm my-1">
+          <p class="m-0">Softpro India &#9829; developed by <a href="https://www.softproindia.in/"
+              target="_blank">Softpro Team</a>.</p>
+        </div>
+        <div class="col-auto my-1">
+          <ul class="list-inline footer-link mb-0">
+            <li class="list-inline-item"><a href="/index">Home</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+ <!--  [Page Specific JS] start -->
+  <script src='/user/assets/js/plugins/apexcharts.min.js' ></script>
+  <script src='/user/assets/js/pages/dashboard-default.js' ></script>
+  <!-- [Page Specific JS] end
+  Required Js -->
+  <script src='/user/assets/js/plugins/popper.min.js' ></script>
+  <script src='/user/assets/js/plugins/simplebar.min.js' ></script>
+  <script src='/user/assets/js/plugins/bootstrap.min.js' ></script>
+  <script src='/user/assets/js/fonts/custom-font.js' ></script>
+  <script src='/user/assets/js/pcoded.js' ></script>
+  <script src='/user/assets/js/plugins/feather.min.js' ></script>
+
+
+
+
+
+  <script>layout_change('light');</script>
+
+
+
+
+  <script>change_box_container('false');</script>
+
+
+
+  <script>layout_rtl_change('false');</script>
+
+
+  <script>preset_change("preset-1");</script>
+
+
+  <script>font_change("Public-Sans");</script>
+
+  <script src='/user/assets/js/plugins/sweetalert2.all.min.js' ></script>
+  <script>
+        window.addEventListener("pageshow",function(event)
+        {
+            if(event.persisted || performance.getEntriesByType("navigation")[0]?.typewindow==="back_forword")
+        {
+            window.location.reload();
+        }
+        });
+    </script>
+</body>
+<!-- [Body] end -->
+</html>

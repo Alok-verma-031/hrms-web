@@ -1,0 +1,150 @@
+<html lang="en" th:replace="~{admin/adminbase :: layout(~{::main})}">
+<body>
+	<main class="p-4">
+
+		<!-- Minimal Custom CSS -->
+		<style>
+.custom-table thead th {
+	background-color: #0d6efd;
+	color: #ffffff;
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 0.8rem;
+	letter-spacing: 0.5px;
+}
+
+.desc-cell {
+	max-width: 200px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.top-stat-card {
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.top-stat-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 8px 15px rgba(0,0,0,0.08) !important;
+}
+</style>
+
+		<!-- Top Summary Stats Cards (2 Cards Only) -->
+		<div class="row g-3 mb-4">
+			<!-- Card 1: Total Posted Jobs -->
+			<div class="col-12 col-md-6">
+				<a href="/admin/postjob" class="text-decoration-none">
+					<div class="card border-0 shadow-sm rounded-3 p-3 bg-white top-stat-card">
+						<div class="d-flex align-items-center justify-content-between">
+							<div>
+								<p class="text-muted fw-medium mb-1 fs-7">Total Listings</p>
+								<h3 class="fw-bold text-dark m-0" th:text="${postedjob != null ? postedjob.size() : 0}">0</h3>
+							</div>
+							<div class="bg-primary-subtle text-primary rounded-3 p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+								<i class="fa-solid fa-briefcase fs-3"></i>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+
+			<!-- Card 2: Quick Link to Dashboard -->
+			<div class="col-12 col-md-6">
+				<a href="/admin/admindashboard" class="text-decoration-none">
+					<div class="card border-0 shadow-sm rounded-3 p-3 bg-white top-stat-card">
+						<div class="d-flex align-items-center justify-content-between">
+							<div>
+								<p class="text-muted fw-medium mb-1 fs-7">Quick Navigation</p>
+								<h5 class="fw-bold text-success m-0">Go to Dashboard</h5>
+							</div>
+							<div class="bg-success-subtle text-success rounded-3 p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+								<i class="bi bi-speedometer2 fs-3"></i>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+
+		<!-- Card Wrapper -->
+		<div class="card border-0 shadow-sm rounded-3 p-4 bg-white">
+
+			<!-- Header -->
+			<div class="d-flex align-items-center gap-3 mb-3">
+				<div
+					class="bg-primary-subtle text-primary rounded-3 p-2 d-flex align-items-center justify-content-center"
+					style="width: 42px; height: 42px;">
+					<i class="fa-solid fa-list-check fs-4"></i>
+				</div>
+				<h2 class="fw-bold text-dark m-0">View Posted Jobs</h2>
+			</div>
+
+			<hr class="text-secondary opacity-25 mb-4" />
+
+			<!-- Table Container -->
+			<div class="table-responsive">
+				<table
+					class="table custom-table table-hover table-bordered text-nowrap align-middle m-0">
+					<thead>
+						<tr>
+							<th class="text-center">S.No.</th>
+							<th>Title</th>
+							<th>Description</th>
+							<th>Location</th>
+							<th>Salary</th>
+							<th>Job Type</th>
+							<th>Last Date</th>
+							<th>Posted Date</th>
+							<th class="text-center">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="pj, pjStat : ${postedjob}">
+							<!-- S.No Index -->
+							<td class="text-center fw-semibold text-muted" th:text="${pjStat.count}">1</td>
+
+							<!-- Job Title -->
+							<td class="fw-bold text-dark" th:text="${pj.title}"></td>
+
+							<!-- Description -->
+							<td>
+								<div class="desc-cell" th:text="${pj.description}"
+									th:title="${pj.description}"></div>
+							</td>
+
+							<!-- Location -->
+							<td><span th:text="${pj.location}"></span></td>
+
+							<!-- Salary -->
+							<td class="fw-bold text-dark">₹<span th:text="${pj.salary}"></span>
+							</td>
+
+							<!-- Job Type -->
+							<td><span
+								class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2 rounded-pill fw-semibold"
+								th:text="${pj.jobtype}">Full-time</span></td>
+
+							<!-- Last Date -->
+							<td><span th:text="${pj.lastdate}">2026-08-15</span></td>
+
+							<!-- Posted Date -->
+							<td><span class="text-muted" th:text="${pj.posteddate}"></span>
+							</td>
+							<td class="text-center">
+								<a th:href="@{/admin/deletejobs(id=${pj.id})}"
+								class="btn btn-outline-danger btn-sm px-3 rounded-2"
+								onclick="return confirm('Are you sure you want to delete this job posting?');">
+									<i class="bi bi-trash-fill me-1"></i>Delete
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+
+	</main>
+</body>
+</html>

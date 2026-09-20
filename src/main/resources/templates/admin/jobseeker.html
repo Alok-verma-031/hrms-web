@@ -1,0 +1,160 @@
+<html lang="en" th:replace="~{admin/adminbase :: layout(~{::main})}">
+<body>
+	<main class="p-4">
+
+		<!-- Minimal CSS for Table Styling & Stat Cards -->
+		<style>
+.custom-table thead th {
+	background-color: #0d6efd;
+	color: #ffffff;
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 0.8rem;
+	letter-spacing: 0.5px;
+}
+
+.address-cell {
+	max-width: 200px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.top-stat-card {
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.top-stat-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 8px 15px rgba(0,0,0,0.08) !important;
+}
+</style>
+
+		<!-- Top Summary Stats Cards (2 Cards Only) -->
+		<div class="row g-3 mb-4">
+			<!-- Card 1: Total Users / Jobseekers -->
+			<div class="col-12 col-md-6">
+				<div class="card border-0 shadow-sm rounded-3 p-3 bg-white top-stat-card">
+					<div class="d-flex align-items-center justify-content-between">
+						<div>
+							<p class="text-muted fw-medium mb-1 fs-7">Total Jobseekers</p>
+							<h3 class="fw-bold text-dark m-0" th:text="${users != null ? users.size() : 0}">0</h3>
+						</div>
+						<div class="bg-primary-subtle text-primary rounded-3 p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+							<i class="bi bi-people-fill fs-3"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Card 2: Quick Link to Dashboard -->
+			<div class="col-12 col-md-6">
+				<a href="/admin/admindashboard" class="text-decoration-none">
+					<div class="card border-0 shadow-sm rounded-3 p-3 bg-white top-stat-card">
+						<div class="d-flex align-items-center justify-content-between">
+							<div>
+								<p class="text-muted fw-medium mb-1 fs-7">Quick Navigation</p>
+								<h5 class="fw-bold text-primary m-0">Go to Dashboard</h5>
+							</div>
+							<div class="bg-success-subtle text-success rounded-3 p-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+								<i class="bi bi-speedometer2 fs-3"></i>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+
+		<!-- Card Wrapper for Table -->
+		<div class="card border-0 shadow-sm rounded-3 p-4 bg-white">
+
+			<!-- Header -->
+			<div class="d-flex align-items-center justify-content-between mb-3">
+				<div class="d-flex align-items-center gap-3">
+					<div
+						class="bg-primary-subtle text-primary rounded-3 p-2 d-flex align-items-center justify-content-center"
+						style="width: 42px; height: 42px;">
+						<i class="bi bi-people-fill fs-4"></i>
+					</div>
+					<h2 class="fw-bold text-dark m-0">View Jobseekers</h2>
+				</div>
+			</div>
+
+			<hr class="text-secondary opacity-25 mb-4" />
+
+			<!-- Table Container -->
+			<div class="table-responsive">
+				<table
+					class="table custom-table table-hover table-bordered text-nowrap align-middle m-0">
+					<thead>
+						<tr>
+							<th class="text-center">S.No.</th>
+							<th>Name</th>
+							<th>Gender</th>
+							<th>Contact No</th>
+							<th>Email Address</th>
+							<th>Qualification</th>
+							<th>Experience</th>
+							<th>Key Skills</th>
+							<th>Address</th>
+							<th class="text-center">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="user, userStat : ${users}">
+							<!-- Serial Number -->
+							<td class="text-center fw-semibold text-muted"
+								th:text="${userStat.count}">1</td>
+
+							<!-- Name -->
+							<td class="fw-bold text-primary" th:text="${user.name}">John Doe</td>
+
+							<!-- Gender -->
+							<td><i class="bi bi-person me-1 text-secondary"></i> <span
+								th:text="${user.gender}">Male</span></td>
+
+							<!-- Contact -->
+							<td><i class="bi bi-telephone-fill text-primary me-1"></i> <span
+								th:text="${user.contactno}">+91 9876543210</span></td>
+
+							<!-- Email -->
+							<td><i class="bi bi-envelope-fill text-muted me-1"></i> <span
+								th:text="${user.emailaddress}">john@example.com</span></td>
+
+							<!-- Qualification -->
+							<td><span
+								class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1 rounded"
+								th:text="${user.qualification}">B.Tech</span></td>
+
+							<!-- Experience -->
+							<td class="fw-semibold text-dark" th:text="${user.experience}">2
+								Years</td>
+
+							<!-- Key Skills -->
+							<td><span class="badge bg-light text-dark border px-2 py-1"
+								th:text="${user.keyskills}">Java, Spring Boot</span></td>
+
+							<!-- Address -->
+							<td>
+								<div class="address-cell" th:text="${user.address}"
+									th:title="${user.address}">
+									<i class="bi bi-geo-alt-fill text-danger me-1"></i> Address details...
+								</div>
+							</td>
+							<td class="text-center">
+								<a th:href="@{/admin/deleteuser(id=${user.userid})}"
+								class="btn btn-outline-danger btn-sm px-3 rounded-2"
+								onclick="return confirm('Are you sure you want to delete this jobseeker?');">
+									<i class="bi bi-trash-fill me-1"></i>Delete
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+
+	</main>
+</body>
+</html>
